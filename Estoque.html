@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle de Estoque</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pg-estoque">
+    <div class="barra-gov">
+      <span>Prefeitura Municipal • Secretaria Municipal de Educação</span>
+    </div>
+
+    <header class="topo">
+      <div class="identidade">
+        <div class="brasao">SME</div>
+        <div class="nomes">
+          <div class="orgao">Secretaria Municipal de Educação</div>
+          <div class="sistema">Estoque entrada e saida</div>
+        </div>
+      </div>
+    </header>
+
+<div class="container">
+
+  <div>
+    <div class="card">
+      <h2>Cadastrar item</h2>
+      <label>Nome do item</label>
+      <input type="text" id="itemName" placeholder="Ex: Uniforme tamanho M">
+
+      <label>Categoria</label>
+      <select id="itemCategory">
+        <option value="livros">Livros</option>
+        <option value="uniformes">Uniformes</option>
+        <option value="materiais">Materiais</option>
+        <option value="outros">Outros</option>
+      </select>
+
+      <label>Quantidade inicial</label>
+      <input type="number" id="itemQty" min="0" value="0">
+
+      <label>Estoque mínimo (alerta)</label>
+      <input type="number" id="itemMin" min="0" value="5">
+
+      <label>Custo unitário (R$)</label>
+      <input type="number" id="itemCusto" min="0" step="0.01" value="0.00">
+
+      <button class="btn-primary" onclick="addItem()">+ Adicionar item</button>
+      <div id="mensagemItem" class="mensagem-status"></div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h2>Movimentar estoque</h2>
+      <label>Selecione o item</label>
+      <select id="moveItem"></select>
+
+      <label>Quantidade</label>
+      <input type="number" id="moveQty" min="1" value="1">
+
+      <label>Custo unitário desta movimentação (R$)</label>
+      <input type="number" id="moveCusto" min="0" step="0.01" value="0.00">
+
+      <label>Responsável</label>
+      <input type="text" id="moveResponsavel" placeholder="Nome de quem registrou">
+
+      <div class="movement-row">
+        <button class="btn-in" onclick="moveStock('entrada')">⬇ Entrada</button>
+        <button class="btn-out" onclick="moveStock('saida')">⬆ Saída</button>
+      </div>
+      <div id="mensagemMovimentacao" class="mensagem-status"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="stats" id="stats">
+      <div class="stat-box">
+        <div class="num" id="statTipos">—</div>
+        <div class="lbl">Tipos de item</div>
+      </div>
+      <div class="stat-box">
+        <div class="num" id="statUnidades">—</div>
+        <div class="lbl">Unidades em estoque</div>
+      </div>
+      <div class="stat-box">
+        <div class="num" id="statBaixo">—</div>
+        <div class="lbl">Abaixo do mínimo</div>
+      </div>
+      <div class="stat-box">
+        <div class="num" id="statValorTotal">—</div>
+        <div class="lbl">Valor total em estoque</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Itens em estoque</h2>
+      <div class="toolbar">
+        <input type="text" id="search" placeholder="Buscar por nome..." oninput="renderTable()">
+        <select id="filterCategory" onchange="renderTable()">
+          <option value="">Todas as categorias</option>
+          <option value="livros">Livros</option>
+          <option value="uniformes">Uniformes</option>
+          <option value="materiais">Materiais</option>
+          <option value="outros">Outros</option>
+        </select>
+        <button class="btn-exportar" onclick="exportarItensCSV()">⇩ Exportar CSV</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Categoria</th>
+            <th>Qtd.</th>
+            <th>Mínimo</th>
+            <th>Custo un.</th>
+            <th>Valor total</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div id="emptyMsg" class="empty" style="display:none;">Nenhum item cadastrado ainda.</div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h2>Histórico de movimentações</h2>
+
+      <div class="filtros-mov">
+        <div class="filtro-campo">
+          <label>De</label>
+          <input type="date" id="filtroDataInicio" onchange="renderHistory()">
+        </div>
+        <div class="filtro-campo">
+          <label>Até</label>
+          <input type="date" id="filtroDataFim" onchange="renderHistory()">
+        </div>
+        <div class="filtro-campo">
+          <label>Produto</label>
+          <select id="filtroProduto" onchange="renderHistory()">
+            <option value="">Todos os produtos</option>
+          </select>
+        </div>
+        <div class="filtro-campo">
+          <label>Tipo</label>
+          <select id="filtroTipo" onchange="renderHistory()">
+            <option value="">Entradas e saídas</option>
+            <option value="entrada">Somente entradas</option>
+            <option value="saida">Somente saídas</option>
+          </select>
+        </div>
+        <div class="filtro-campo">
+          <label>Responsável</label>
+          <input type="text" id="filtroResponsavel" placeholder="Nome..." oninput="renderHistory()">
+        </div>
+        <div class="filtro-acoes">
+          <button class="btn-limpar" onclick="limparFiltros()">Limpar</button>
+          <button class="btn-exportar" onclick="exportarMovimentacoesCSV()">⇩ Exportar CSV</button>
+        </div>
+      </div>
+
+      <div class="resumo-filtro" id="resumoFiltro"></div>
+
+      <div id="history">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Item</th>
+              <th>Tipo</th>
+              <th>Qtd.</th>
+              <th>Custo total</th>
+              <th>Responsável</th>
+            </tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+        <div id="emptyHist" class="empty" style="display:none;">Nenhuma movimentação encontrada.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+     <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+  </footer>
+
+<script src="js/estoque.js"></script>
+</body>
+</html>

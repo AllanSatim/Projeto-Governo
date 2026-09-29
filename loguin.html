@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — SGE Educação</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pg-login">
+
+  <div class="barra-gov">
+    <span>Prefeitura Municipal • Secretaria Municipal de Educação</span>
+  </div>
+
+  <header class="topo">
+    <div class="identidade">
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">SGE — Sistema de Gestão</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="area-login">
+    <div class="card-login">
+      <div class="card-login-cabecalho">
+        <h1>Acessar o sistema</h1>
+        <p>Entre com seu usuário institucional para continuar.</p>
+      </div>
+
+      <form id="formLogin" onsubmit="return realizarLogin(event)">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" placeholder="seu.usuario" autocomplete="username" required>
+
+        <label for="senha">Senha</label>
+        <div class="campo-senha">
+          <input type="password" id="senha" placeholder="••••••••" autocomplete="current-password" required>
+          <button type="button" class="btn-mostrar-senha" onclick="alternarSenha()" id="btnMostrarSenha">Mostrar</button>
+        </div>
+
+        <div class="linha-opcoes">
+          <label class="opcao-lembrar">
+            <input type="checkbox" id="lembrar">
+            Manter conectado
+          </label>
+          <a href="#" class="link-esqueci">Esqueci minha senha</a>
+        </div>
+
+        <button type="submit" class="btn-entrar">Entrar</button>
+        <div id="mensagemLogin" class="mensagem-status"></div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+  </footer>
+
+  <script src="js/Loguin.js"></script>
+</body>
+</html>

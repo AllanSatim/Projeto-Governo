@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatórios — SGE Educação</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body class="pg-relatorio">
+
+  <div class="barra-gov">
+    <span>Prefeitura Municipal • Secretaria Municipal de Educação</span>
+  </div>
+
+  <header class="topo">
+    <div class="identidade">
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">Relatórios de Estoque</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <h1 class="titulo-pagina">Relatórios de Estoque</h1>
+    <p class="subtitulo-pagina">Visão em tempo real da quantidade de itens por categoria, custos e alertas de reposição.</p>
+
+    <div class="barra-acoes">
+      <div class="periodo-filtro">
+        <div class="filtro-campo">
+          <label>Período de</label>
+          <input type="date" id="periodoInicio">
+        </div>
+        <div class="filtro-campo">
+          <label>até</label>
+          <input type="date" id="periodoFim">
+        </div>
+        <button class="btn-aplicar" onclick="carregarRelatorio()">Aplicar período</button>
+      </div>
+      <div class="exportar-acoes">
+        <button class="btn-exportar" onclick="exportarRelatorioCSV()">⇩ Exportar CSV</button>
+        <button class="btn-exportar btn-imprimir" onclick="window.print()">⎙ Imprimir / PDF</button>
+      </div>
+    </div>
+
+    <div class="indicadores-custo">
+      <div class="indicador-custo">
+        <div class="rotulo">Valor total em estoque</div>
+        <div class="valor" id="valorTotalEstoque">—</div>
+      </div>
+      <div class="indicador-custo">
+        <div class="rotulo">Custo de entradas no período</div>
+        <div class="valor" id="custoEntradas">—</div>
+      </div>
+      <div class="indicador-custo">
+        <div class="rotulo">Custo de saídas no período</div>
+        <div class="valor" id="custoSaidas">—</div>
+      </div>
+    </div>
+
+    <div class="painel" style="margin-bottom:24px;">
+      <div class="painel-cabecalho">
+        <h2>Estoque por categoria</h2>
+        <span class="link-ver-tudo" id="ultimaAtualizacao">Atualizando...</span>
+      </div>
+      <div style="padding:24px; height:340px;">
+        <canvas id="graficoCategorias"></canvas>
+      </div>
+    </div>
+
+    <div class="painel" style="margin-bottom:24px;">
+      <div class="painel-cabecalho">
+        <h2>Custo por categoria</h2>
+      </div>
+      <div style="padding:24px; height:340px;">
+        <canvas id="graficoCustos"></canvas>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel-cabecalho">
+        <h2>Itens abaixo do estoque mínimo</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Categoria</th>
+            <th>Escola</th>
+            <th>Quantidade</th>
+            <th>Mínimo</th>
+            <th>Custo de reposição</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaItensCriticos">
+        </tbody>
+      </table>
+      <div id="semItensCriticos" class="vazio-lista" style="display:none;">
+        Nenhum item abaixo do mínimo no momento.
+      </div>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+  </footer>
+
+  <script src="js/Relatorio.js"></script>
+</body>
+</html>

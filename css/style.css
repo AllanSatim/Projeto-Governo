@@ -1,0 +1,883 @@
+/* =========================================================
+   SGE Educação — style.css (arquivo único)
+
+   COMO FUNCIONA:
+   - A parte "COMUM" vale para todas as páginas (barra, cabeçalho, rodapé).
+   - O que é específico de cada página começa com a classe do <body>:
+       index.html     -> <body class="pg-inicio">
+       Estoque.html   -> <body class="pg-estoque">
+       Merenda.html   -> <body class="pg-merenda">
+       Relatorio.html -> <body class="pg-relatorio">
+       loguin.html    -> <body class="pg-login">
+       Suporte.html   -> <body class="pg-suporte">
+   - Assim, ".card" do Estoque não interfere no ".card" do Suporte, etc.
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS (todas as páginas)
+   ========================================================= */
+:root{
+  /* Paleta institucional */
+  --azul-institucional:#0B3D6E;
+  --azul-medio:#1868B7;
+  --azul-claro:#EAF1FA;
+  --verde-educacao:#2E7D4F;
+  --amarelo-alerta:#C7862A;
+  --cinza-fundo:#F3F4F6;
+  --cinza-linha:#D8DCE1;
+  --texto-principal:#1B1F24;
+  --texto-secundario:#5B6470;
+  --branco:#FFFFFF;
+
+  /* Paleta usada na página de Estoque */
+  --bg:#f4f6f9;
+  --card:#ffffff;
+  --primary:#1b3b63;
+  --primary-dark:#12283f;
+  --accent:#e0a800;
+  --danger:#c0392b;
+  --text:#2b2b2b;
+  --muted:#6b7280;
+  --border:#e2e5ea;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+*{ box-sizing:border-box; }
+
+/* Zera margens/padding em todas as páginas, EXCETO o Estoque
+   (o Estoque original não tinha esse reset). :where() mantém
+   a especificidade em zero, então não atrapalha nenhuma outra regra. */
+:where(.pg-inicio, .pg-merenda, .pg-relatorio, .pg-login, .pg-suporte),
+:where(.pg-inicio, .pg-merenda, .pg-relatorio, .pg-login, .pg-suporte) *{
+  margin:0;
+  padding:0;
+}
+
+
+/* =========================================================
+   3. BASE DE CADA PÁGINA (body)
+   ========================================================= */
+
+/* Início, Merenda, Relatório e Login */
+body.pg-inicio,
+body.pg-merenda,
+body.pg-relatorio,
+body.pg-login{
+  font-family:"IBM Plex Sans", Arial, sans-serif;
+  background:var(--cinza-fundo);
+  color:var(--texto-principal);
+  font-size:16px;
+  line-height:1.5;
+}
+
+/* Estoque */
+body.pg-estoque{
+  margin:0;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Suporte */
+body.pg-suporte{
+  font-family:'Segoe UI', Arial, sans-serif;
+}
+
+/* Login e Suporte: rodapé sempre embaixo */
+body.pg-login,
+body.pg-suporte{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+
+/* =========================================================
+   4. COMUM A TODAS AS PÁGINAS
+   ========================================================= */
+a{ color:inherit; text-decoration:none; }
+
+code, .mono{ font-family:"IBM Plex Mono", "Courier New", monospace; }
+
+/* ---------- Barra do governo ---------- */
+.barra-gov{
+  background:#04213F;
+  color:#CBD8E8;
+  font-size:13px;
+  padding:6px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* ---------- Cabeçalho ---------- */
+header.topo{
+  background:var(--azul-institucional);
+  color:var(--branco);
+  padding:16px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:4px solid var(--verde-educacao);
+}
+.identidade{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.brasao{
+  width:44px; height:44px;
+  border-radius:4px;
+  background:var(--branco);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--azul-institucional);
+  font-weight:700;
+  font-size:15px;
+  flex-shrink:0;
+}
+.identidade .nomes{ line-height:1.25; }
+.identidade .nomes .orgao{ font-size:12.5px; color:#CFE0F2; }
+.identidade .nomes .sistema{ font-size:18px; font-weight:600; }
+
+/* ---------- Rodapé ---------- */
+footer.rodape{
+  background:var(--azul-institucional);
+  color:#CFE0F2;
+  padding:22px 32px;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+}
+footer.rodape a{ color:#CFE0F2; }
+footer.rodape a:hover{ text-decoration:underline; }
+
+
+/* =========================================================
+   5. COMPONENTES COMPARTILHADOS
+      (Início, Merenda e Relatório usam o mesmo visual)
+   ========================================================= */
+.trilha{
+  font-size:13px;
+  color:var(--texto-secundario);
+  margin-bottom:6px;
+}
+.trilha span{ color:var(--azul-institucional); font-weight:600; }
+
+.titulo-pagina{
+  font-size:26px;
+  font-weight:600;
+  margin-bottom:4px;
+}
+.subtitulo-pagina{
+  color:var(--texto-secundario);
+  font-size:14.5px;
+  margin-bottom:24px;
+}
+
+.painel{
+  background:var(--branco);
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  overflow:hidden;
+}
+.painel-cabecalho{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+  border-bottom:1px solid var(--cinza-linha);
+}
+.painel-cabecalho h2{ font-size:15.5px; font-weight:600; }
+.link-ver-tudo{
+  font-size:13.5px;
+  color:var(--azul-medio);
+  font-weight:600;
+}
+
+/* Tabelas (não vale para o Estoque, que tem tabela própria) */
+:where(.pg-inicio, .pg-merenda, .pg-relatorio) table{
+  width:100%;
+  border-collapse:collapse;
+}
+:where(.pg-inicio, .pg-merenda, .pg-relatorio) thead th{
+  text-align:left;
+  font-size:12.5px;
+  color:var(--texto-secundario);
+  padding:10px 20px;
+  border-bottom:1px solid var(--cinza-linha);
+  font-weight:600;
+}
+:where(.pg-inicio, .pg-merenda, .pg-relatorio) tbody td{
+  padding:13px 20px;
+  font-size:14px;
+  border-bottom:1px solid #EEF0F2;
+}
+:where(.pg-inicio, .pg-merenda, .pg-relatorio) tbody tr:last-child td{
+  border-bottom:none;
+}
+
+.vazio-lista{
+  padding:24px;
+  text-align:center;
+  color:var(--texto-secundario);
+}
+
+/* Área de conteúdo de Merenda e Relatório */
+.pg-merenda .conteudo,
+.pg-relatorio .conteudo{
+  max-width:1180px;
+  margin:0 auto;
+  padding:28px 32px 60px;
+}
+
+
+/* =========================================================
+   6. PÁGINA: INÍCIO  (index.html -> body.pg-inicio)
+   ========================================================= */
+.pg-inicio .usuario-topo{
+  display:flex; align-items:center; gap:10px;
+  font-size:14px;
+}
+.pg-inicio .avatar{
+  width:34px; height:34px; border-radius:50%;
+  background:var(--verde-educacao);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:13px;
+}
+
+.pg-inicio .corpo{
+  display:flex;
+  min-height:calc(100vh - 96px);
+}
+
+/* Menu lateral */
+.pg-inicio nav.lateral{
+  width:230px;
+  background:var(--branco);
+  border-right:1px solid var(--cinza-linha);
+  padding:20px 0;
+  flex-shrink:0;
+}
+.pg-inicio nav.lateral .grupo-titulo{
+  font-size:11.5px;
+  color:var(--texto-secundario);
+  padding:6px 22px;
+  margin-top:14px;
+  letter-spacing:0.02em;
+}
+.pg-inicio nav.lateral ul{ list-style:none; }
+.pg-inicio nav.lateral li a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 22px;
+  color:var(--texto-principal);
+  font-size:14.5px;
+  border-left:3px solid transparent;
+}
+.pg-inicio nav.lateral li a:hover{ background:var(--azul-claro); }
+.pg-inicio nav.lateral li a.ativo{
+  background:var(--azul-claro);
+  border-left:3px solid var(--azul-medio);
+  color:var(--azul-institucional);
+  font-weight:600;
+}
+.pg-inicio nav.lateral svg{ flex-shrink:0; }
+
+.pg-inicio main.conteudo{
+  flex:1;
+  padding:28px 32px 60px;
+  max-width:1180px;
+}
+
+/* Indicadores */
+.pg-inicio .indicadores{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+  margin-bottom:32px;
+}
+.pg-inicio .indicador{
+  background:var(--branco);
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  padding:18px 20px;
+}
+.pg-inicio .indicador .rotulo{
+  font-size:13px;
+  color:var(--texto-secundario);
+  margin-bottom:8px;
+}
+.pg-inicio .indicador .valor{
+  font-size:28px;
+  font-weight:700;
+  font-family:"IBM Plex Mono", monospace;
+}
+.pg-inicio .indicador .nota{
+  font-size:12.5px;
+  margin-top:6px;
+}
+.pg-inicio .nota.ok{ color:var(--verde-educacao); }
+.pg-inicio .nota.alerta{ color:var(--amarelo-alerta); }
+
+/* Módulos */
+.pg-inicio .secao-titulo{
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:14px;
+  margin-top:8px;
+}
+.pg-inicio .modulos{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:14px;
+  margin-bottom:34px;
+}
+.pg-inicio .modulo{
+  background:var(--branco);
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  padding:18px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.pg-inicio .modulo .icone-modulo{
+  width:38px; height:38px;
+  background:var(--azul-claro);
+  color:var(--azul-institucional);
+  border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+}
+.pg-inicio .modulo .nome-modulo{ font-size:14.5px; font-weight:600; }
+.pg-inicio .modulo .desc-modulo{
+  font-size:12.5px;
+  color:var(--texto-secundario);
+  line-height:1.4;
+}
+
+/* Badges de tabela (Início) */
+.pg-inicio .protocolo{ color:var(--texto-secundario); }
+.pg-inicio .tipo-badge{
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:3px;
+  font-size:12px;
+  font-weight:600;
+}
+.pg-inicio .tipo-badge.entrada{ background:#E5F3EA; color:var(--verde-educacao); }
+.pg-inicio .tipo-badge.saida{ background:#FCEEE0; color:var(--amarelo-alerta); }
+
+@media (max-width: 900px){
+  .pg-inicio .indicadores{ grid-template-columns:repeat(2,1fr); }
+  .pg-inicio .modulos{ grid-template-columns:repeat(2,1fr); }
+  .pg-inicio nav.lateral{ display:none; }
+  .pg-inicio .busca-topo{ display:none; }
+}
+
+
+/* =========================================================
+   7. PÁGINA: ESTOQUE  (Estoque.html -> body.pg-estoque)
+   ========================================================= */
+.pg-estoque .container{
+  max-width:1100px;
+  margin:24px auto;
+  padding:0 16px;
+  display:grid;
+  grid-template-columns:340px 1fr;
+  gap:20px;
+}
+
+.pg-estoque .card{
+  background:var(--card);
+  border-radius:10px;
+  padding:20px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);
+  border:1px solid var(--border);
+}
+.pg-estoque .card h2{
+  margin-top:0;
+  font-size:1.05rem;
+  color:var(--primary-dark);
+  border-bottom:1px solid var(--border);
+  padding-bottom:8px;
+}
+
+.pg-estoque label{
+  display:block;
+  font-size:0.82rem;
+  color:var(--muted);
+  margin:10px 0 4px;
+}
+.pg-estoque input,
+.pg-estoque select{
+  width:100%;
+  padding:8px 10px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  font-size:0.9rem;
+}
+.pg-estoque button{
+  cursor:pointer;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  padding:10px 14px;
+  font-size:0.88rem;
+}
+.pg-estoque .btn-primary{
+  background:var(--primary);
+  color:white;
+  width:100%;
+  margin-top:14px;
+}
+.pg-estoque .btn-primary:hover{ background:var(--primary-dark); }
+
+.pg-estoque .mensagem-status{
+  margin-top:10px;
+  font-size:0.82rem;
+  min-height:1.2em;
+}
+.pg-estoque .mensagem-status.sucesso{ color:var(--verde-educacao); }
+.pg-estoque .mensagem-status.erro{ color:var(--danger); }
+
+.pg-estoque .movement-row{ display:flex; gap:8px; margin-top:10px; }
+.pg-estoque .movement-row button{ flex:1; }
+.pg-estoque .btn-in{ background:#d7f0e0; color:var(--primary-dark); }
+.pg-estoque .btn-in:hover{ background:#bfe8cf; }
+.pg-estoque .btn-out{ background:#fbe0dd; color:var(--danger); }
+.pg-estoque .btn-out:hover{ background:#f6c9c4; }
+
+.pg-estoque .toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+.pg-estoque .toolbar input,
+.pg-estoque .toolbar select{ width:auto; flex:1; min-width:140px; }
+
+.pg-estoque table{ width:100%; border-collapse:collapse; font-size:0.87rem; }
+.pg-estoque th,
+.pg-estoque td{ text-align:left; padding:9px 8px; border-bottom:1px solid var(--border); }
+.pg-estoque th{
+  color:var(--muted);
+  font-weight:600;
+  font-size:0.78rem;
+  text-transform:uppercase;
+}
+.pg-estoque tr:hover{ background:#fafbfc; }
+
+.pg-estoque .badge{
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:20px;
+  font-size:0.72rem;
+  font-weight:700;
+}
+.pg-estoque .badge-livros{ background:#e3ecfc; color:#2452a8; }
+.pg-estoque .badge-uniformes{ background:#fdeedb; color:#b3690a; }
+.pg-estoque .badge-materiais{ background:#e6f4ea; color:#256b3a; }
+.pg-estoque .badge-outros{ background:#eee; color:#555; }
+
+.pg-estoque .stock-low{ color:var(--danger); font-weight:700; }
+.pg-estoque .stock-ok{ color:var(--primary-dark); font-weight:700; }
+
+.pg-estoque .row-actions button{
+  background:none;
+  padding:4px 8px;
+  font-size:0.78rem;
+}
+.pg-estoque .row-actions .edit{ color:#2452a8; }
+.pg-estoque .row-actions .del{ color:var(--danger); }
+
+.pg-estoque .empty{ text-align:center; color:var(--muted); padding:30px; }
+
+.pg-estoque #history{
+  max-height:260px;
+  overflow-y:auto;
+  margin-top:8px;
+}
+
+.pg-estoque .stats{ display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
+.pg-estoque .stat-box{
+  flex:1;
+  min-width:120px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+  text-align:center;
+}
+.pg-estoque .stat-box .num{ font-size:1.5rem; font-weight:700; color:var(--primary-dark); }
+.pg-estoque .stat-box .lbl{ font-size:0.75rem; color:var(--muted); }
+
+/* Filtros de movimentação (RF08) */
+.pg-estoque .filtros-mov{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:10px;
+  padding:14px;
+  background:#fafbfc;
+  border:1px solid var(--border);
+  border-radius:8px;
+  margin-bottom:14px;
+}
+.pg-estoque .filtro-campo label{
+  margin:0 0 4px;
+  font-size:0.75rem;
+}
+.pg-estoque .filtro-campo input,
+.pg-estoque .filtro-campo select{
+  font-size:0.82rem;
+  padding:6px 8px;
+}
+.pg-estoque .filtro-acoes{
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+}
+.pg-estoque .filtro-acoes button{ flex:1; }
+
+.pg-estoque .btn-limpar{
+  background:#eef0f2;
+  color:var(--muted);
+  font-size:0.78rem;
+  padding:7px 10px;
+}
+.pg-estoque .btn-limpar:hover{ background:#e2e5ea; }
+
+/* Exportação (RF09) */
+.pg-estoque .btn-exportar{
+  background:var(--verde-educacao);
+  color:#fff;
+  font-size:0.78rem;
+  padding:7px 12px;
+  white-space:nowrap;
+}
+.pg-estoque .btn-exportar:hover{ background:#256b3a; }
+
+/* Resumo de custos do filtro */
+.pg-estoque .resumo-filtro{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  font-size:0.8rem;
+  color:var(--muted);
+  padding:0 2px 12px;
+}
+.pg-estoque .resumo-filtro strong{ color:var(--primary-dark); }
+
+@media (max-width: 800px){
+  .pg-estoque .container{ grid-template-columns:1fr; }
+}
+
+
+/* =========================================================
+   8. PÁGINA: MERENDA  (Merenda.html -> body.pg-merenda)
+   ========================================================= */
+.pg-merenda .form-area{ padding:20px; }
+.pg-merenda .form-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.pg-merenda .form-campo label{
+  display:block;
+  font-size:0.82rem;
+  color:var(--texto-secundario);
+  margin:10px 0 4px;
+}
+.pg-merenda .form-campo input,
+.pg-merenda .form-campo select{
+  width:100%;
+  padding:8px 10px;
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  font-size:0.9rem;
+  font-family:inherit;
+}
+.pg-merenda .btn-primary{
+  cursor:pointer;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  padding:10px 16px;
+  font-size:0.9rem;
+  background:var(--azul-institucional);
+  color:var(--branco);
+  margin-top:16px;
+}
+.pg-merenda .btn-primary:hover{ background:var(--azul-medio); }
+
+.pg-merenda .mensagem-status{
+  margin-top:10px;
+  font-size:0.85rem;
+}
+.pg-merenda .mensagem-status.sucesso{ color:var(--verde-educacao); }
+.pg-merenda .mensagem-status.erro{ color:#c0392b; }
+
+
+/* =========================================================
+   9. PÁGINA: RELATÓRIO  (Relatorio.html -> body.pg-relatorio)
+   ========================================================= */
+
+/* Barra de ações: período + exportação */
+.pg-relatorio .barra-acoes{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-bottom:22px;
+}
+.pg-relatorio .periodo-filtro{
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.pg-relatorio .filtro-campo label{
+  display:block;
+  font-size:0.75rem;
+  color:var(--texto-secundario);
+  margin-bottom:4px;
+}
+.pg-relatorio .filtro-campo input{
+  padding:7px 9px;
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  font-size:0.85rem;
+  font-family:inherit;
+}
+.pg-relatorio .exportar-acoes{ display:flex; gap:8px; }
+
+.pg-relatorio button{
+  cursor:pointer;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  font-family:inherit;
+}
+.pg-relatorio .btn-aplicar{
+  background:var(--azul-institucional);
+  color:var(--branco);
+  padding:8px 14px;
+  font-size:0.82rem;
+}
+.pg-relatorio .btn-aplicar:hover{ background:var(--azul-medio); }
+
+.pg-relatorio .btn-exportar{
+  background:var(--verde-educacao);
+  color:var(--branco);
+  padding:8px 14px;
+  font-size:0.82rem;
+  white-space:nowrap;
+}
+.pg-relatorio .btn-exportar:hover{ background:#256b3a; }
+.pg-relatorio .btn-imprimir{ background:var(--texto-secundario); }
+.pg-relatorio .btn-imprimir:hover{ background:#43505c; }
+
+/* Indicadores de custo */
+.pg-relatorio .indicadores-custo{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:16px;
+  margin-bottom:24px;
+}
+.pg-relatorio .indicador-custo{
+  background:var(--branco);
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  padding:18px 20px;
+}
+.pg-relatorio .indicador-custo .rotulo{
+  font-size:13px;
+  color:var(--texto-secundario);
+  margin-bottom:8px;
+}
+.pg-relatorio .indicador-custo .valor{
+  font-size:24px;
+  font-weight:700;
+  color:var(--azul-institucional);
+  font-family:"IBM Plex Mono", monospace;
+}
+
+.pg-relatorio .qtd-critica{ color:var(--amarelo-alerta); font-weight:700; }
+
+/* Impressão (RF09 — gera PDF pelo navegador) */
+@media print{
+  .pg-relatorio .barra-gov,
+  .pg-relatorio .rodape,
+  .pg-relatorio .barra-acoes{ display:none; }
+  .pg-relatorio{ background:#fff; }
+  .pg-relatorio .painel{ break-inside:avoid; page-break-inside:avoid; }
+  .pg-relatorio header.topo{ border-bottom:2px solid #000; }
+}
+
+
+/* =========================================================
+   10. PÁGINA: LOGIN  (loguin.html -> body.pg-login)
+   ========================================================= */
+.pg-login .area-login{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+
+.pg-login .card-login{
+  background:var(--branco);
+  border:1px solid var(--cinza-linha);
+  border-radius:10px;
+  box-shadow:0 4px 20px rgba(11,61,110,0.08);
+  width:100%;
+  max-width:400px;
+  padding:32px 30px;
+}
+
+.pg-login .card-login-cabecalho{ margin-bottom:24px; }
+.pg-login .card-login-cabecalho h1{
+  font-size:22px;
+  font-weight:600;
+  color:var(--azul-institucional);
+  margin-bottom:6px;
+}
+.pg-login .card-login-cabecalho p{
+  font-size:13.5px;
+  color:var(--texto-secundario);
+}
+
+.pg-login label{
+  display:block;
+  font-size:0.82rem;
+  color:var(--texto-secundario);
+  margin:14px 0 6px;
+}
+
+.pg-login input[type="text"],
+.pg-login input[type="password"]{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--cinza-linha);
+  border-radius:6px;
+  font-size:0.92rem;
+  font-family:inherit;
+  color:var(--texto-principal);
+}
+.pg-login input[type="text"]:focus,
+.pg-login input[type="password"]:focus{
+  outline:none;
+  border-color:var(--azul-medio);
+  box-shadow:0 0 0 3px rgba(24,104,183,0.15);
+}
+
+.pg-login .campo-senha{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.pg-login .campo-senha input{ flex:1; padding-right:76px; }
+.pg-login .btn-mostrar-senha{
+  position:absolute;
+  right:6px;
+  background:none;
+  border:none;
+  color:var(--azul-medio);
+  font-size:0.75rem;
+  font-weight:600;
+  cursor:pointer;
+  padding:6px 8px;
+}
+.pg-login .btn-mostrar-senha:hover{ text-decoration:underline; }
+
+.pg-login .linha-opcoes{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:14px;
+  font-size:0.8rem;
+}
+.pg-login .opcao-lembrar{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--texto-secundario);
+  margin:0;
+  cursor:pointer;
+}
+.pg-login .opcao-lembrar input{ width:auto; margin:0; cursor:pointer; }
+.pg-login .link-esqueci{
+  color:var(--azul-medio);
+  font-weight:600;
+}
+.pg-login .link-esqueci:hover{ text-decoration:underline; }
+
+.pg-login .btn-entrar{
+  width:100%;
+  margin-top:20px;
+  padding:11px 14px;
+  border:none;
+  border-radius:6px;
+  background:var(--azul-institucional);
+  color:var(--branco);
+  font-size:0.92rem;
+  font-weight:600;
+  cursor:pointer;
+}
+.pg-login .btn-entrar:hover{ background:var(--azul-medio); }
+.pg-login .btn-entrar:disabled{ opacity:0.6; cursor:not-allowed; }
+
+.pg-login .mensagem-status{
+  margin-top:12px;
+  font-size:0.82rem;
+  min-height:1.2em;
+  text-align:center;
+}
+.pg-login .mensagem-status.sucesso{ color:var(--verde-educacao); }
+.pg-login .mensagem-status.erro{ color:var(--danger); }
+
+@media (max-width: 480px){
+  .pg-login .card-login{ padding:26px 20px; }
+  .pg-login .linha-opcoes{ flex-direction:column; align-items:flex-start; gap:10px; }
+}
+
+
+/* =========================================================
+   11. PÁGINA: SUPORTE  (Suporte.html -> body.pg-suporte)
+   ========================================================= */
+.pg-suporte .card{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#ffffff;
+  padding:20px;
+}
+
+.pg-suporte .emoji{
+  font-size:64px;
+  margin-bottom:20px;
+  display:inline-block;
+  animation:wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle{
+  0%, 100%{ transform:rotate(-5deg); }
+  50%{ transform:rotate(5deg); }
+}
+
+.pg-suporte .card h1{
+  font-size:28px;
+  color:#2d3436;
+  margin-bottom:12px;
+}

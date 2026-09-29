@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merenda Escolar — SGE Educação</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pg-merenda">
+
+  <div class="barra-gov">
+    <span>Prefeitura Municipal • Secretaria Municipal de Educação</span>
+  </div>
+
+  <header class="topo">
+    <div class="identidade">
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">Merenda Escolar</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <h1 class="titulo-pagina">Merenda Escolar</h1>
+    <p class="subtitulo-pagina">Registro dos alimentos recebidos no mês para controle da merenda.</p>
+
+    <div class="painel" style="margin-bottom:24px;">
+      <div class="painel-cabecalho">
+        <h2>Registrar alimento recebido</h2>
+      </div>
+      <div class="form-area">
+        <div class="form-row">
+          <div class="form-campo">
+            <label>Nome do alimento</label>
+            <input type="text" id="alimentoNome" placeholder="Ex: Arroz tipo 1">
+          </div>
+          <div class="form-campo">
+            <label>Categoria</label>
+            <select id="alimentoCategoria">
+              <option value="graos">Grãos e cereais</option>
+              <option value="hortifruti">Hortifrúti</option>
+              <option value="laticinios">Laticínios</option>
+              <option value="proteinas">Carnes e proteínas</option>
+              <option value="perecivel">Outros perecíveis</option>
+              <option value="naoperecivel">Outros não perecíveis</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-campo">
+            <label>Quantidade</label>
+            <input type="number" id="alimentoQuantidade" min="0" step="0.01" value="0">
+          </div>
+          <div class="form-campo">
+            <label>Unidade</label>
+            <select id="alimentoUnidade">
+              <option value="kg">kg</option>
+              <option value="litros">litros</option>
+              <option value="unidades">unidades</option>
+              <option value="caixas">caixas</option>
+              <option value="pacotes">pacotes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-campo">
+            <label>Data de recebimento</label>
+            <input type="date" id="alimentoData">
+          </div>
+          <div class="form-campo">
+            <label>Fornecedor</label>
+            <input type="text" id="alimentoFornecedor" placeholder="Nome do fornecedor">
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="registrarAlimento()">+ Registrar alimento</button>
+        <div id="mensagemStatus" class="mensagem-status"></div>
+      </div>
+    </div>
+
+    <div class="painel">
+      <div class="painel-cabecalho">
+        <h2>Alimentos recebidos este mês</h2>
+        <span class="link-ver-tudo" id="totalRegistros">Carregando...</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Alimento</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
+            <th>Data</th>
+            <th>Fornecedor</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaAlimentos">
+        </tbody>
+      </table>
+      <div id="semAlimentos" class="vazio-lista" style="display:none;">
+        Nenhum alimento registrado neste mês ainda.
+      </div>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+  </footer>
+
+  <script src="js/Merenda.js"></script>
+</body>
+</html>
