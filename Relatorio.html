@@ -1,112 +1,228 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relatórios — SGE Educação</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios de Estoque — SGE Educação</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="pg-relatorio">
-
-  <div class="barra-gov">
-    <span>Prefeitura Municipal • Secretaria Municipal de Educação</span>
-  </div>
-
+<body>
   <header class="topo">
     <div class="identidade">
+      <button class="btn-menu-mobile" onclick="document.getElementById('menuLateral').classList.toggle('aberta')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
       <div class="brasao">SME</div>
       <div class="nomes">
         <div class="orgao">Secretaria Municipal de Educação</div>
-        <div class="sistema">Relatórios de Estoque</div>
+        <div class="sistema">Relatórios de Estoque & Custos</div>
       </div>
+    </div>
+    <div class="topo-acoes">
+      <a href="login.html" class="btn-sair-topo">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sair
+      </a>
     </div>
   </header>
-
-  <main class="conteudo">
-    <h1 class="titulo-pagina">Relatórios de Estoque</h1>
-    <p class="subtitulo-pagina">Visão em tempo real da quantidade de itens por categoria, custos e alertas de reposição.</p>
-
-    <div class="barra-acoes">
-      <div class="periodo-filtro">
-        <div class="filtro-campo">
-          <label>Período de</label>
-          <input type="date" id="periodoInicio">
+  <div class="corpo">
+    <!-- NAVEGAÇÃO LATERAL UNIFICADA -->
+    <nav class="lateral" id="menuLateral">
+      <div class="lateral-conteudo">
+        <div class="grupo-titulo">PAINEL PRINCIPAL</div>
+        <ul>
+          <li><a href="index.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Início / Painel Geral
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">GESTÃO ESCOLAR</div>
+        <ul>
+          <li><a href="Estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              Estoque Geral
+            </span>
+          </a></li>
+          <li><a href="movimentar-estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+              Movimentar Estoque
+            </span>
+          </a></li>
+          <li><a href="Merenda.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+              Merenda Escolar
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">FINANÇAS & CONTAS</div>
+        <ul>
+          <li><a href="financeiro.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Painel Financeiro
+            </span>
+          </a></li>
+          <li><a class="ativo" href="Relatorio.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
+              Relatórios & Custos
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">ADMINISTRAÇÃO & ACESSO</div>
+        <ul>
+          <li><a href="usuario.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Meu Perfil
+            </span>
+          </a></li>
+          <li><a href="admin.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Painel do Admin
+            </span>
+          </a></li>
+          <li class="item-configuracoes-removido"><a href="configuracoes.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+              Configurações
+            </span>
+          </a></li>
+          <li><a href="Suporte.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Suporte Técnico
+            </span>
+          </a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo">
+      <div class="trilha">
+        <a href="index.html">Início</a>
+        <span class="separador">/</span>
+        <span class="pagina-atual">Relatórios de Estoque</span>
+      </div>
+      <div class="cabecalho-pagina">
+        <div>
+          <h1 class="titulo-pagina">Relatórios Analíticos de Estoque</h1>
+          <p class="subtitulo-pagina">Visão quantitativa de itens por categoria, custos totais consolidados e identificação precoce de desabastecimento.</p>
         </div>
-        <div class="filtro-campo">
-          <label>até</label>
-          <input type="date" id="periodoFim">
+        <div class="acoes-pagina">
+          <button class="btn-exportar" onclick="exportarRelatorioCSV()">⇩ Exportar CSV</button>
+          <button class="btn-exportar" onclick="window.print()">⎙ Imprimir / PDF</button>
         </div>
-        <button class="btn-aplicar" onclick="carregarRelatorio()">Aplicar período</button>
       </div>
-      <div class="exportar-acoes">
-        <button class="btn-exportar" onclick="exportarRelatorioCSV()">⇩ Exportar CSV</button>
-        <button class="btn-exportar btn-imprimir" onclick="window.print()">⎙ Imprimir / PDF</button>
+      <!-- FILTRO DE PERÍODO -->
+      <div class="painel" style="margin-bottom:24px;">
+        <div class="toolbar" style="padding:16px 20px;">
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+            <label style="margin:0; font-size:13.5px;">Filtrar Período:</label>
+            <input type="date" id="periodoInicio" style="max-width:160px;">
+            <span>até</span>
+            <input type="date" id="periodoFim" style="max-width:160px;">
+            <button class="btn-primary btn-sm" onclick="carregarRelatorio()">Aplicar Período</button>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="indicadores-custo">
-      <div class="indicador-custo">
-        <div class="rotulo">Valor total em estoque</div>
-        <div class="valor" id="valorTotalEstoque">—</div>
+      <!-- KPIS FINANCEIROS DE CUSTO -->
+      <div class="indicadores">
+        <div class="indicador indicador-sucesso">
+          <div class="topo-indicador">
+            <span class="rotulo">Valor Total em Estoque</span>
+            <div class="icone-indicador" style="background:var(--verde-suave); color:var(--verde-educacao);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="valorTotalEstoque">—</div>
+          <div class="nota ok">Saldo monetário ativo</div>
+        </div>
+        <div class="indicador">
+          <div class="topo-indicador">
+            <span class="rotulo">Custo de Entradas</span>
+            <div class="icone-indicador">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="custoEntradas">—</div>
+          <div class="nota neutro">Aquisições no período</div>
+        </div>
+        <div class="indicador indicador-alerta">
+          <div class="topo-indicador">
+            <span class="rotulo">Custo de Saídas</span>
+            <div class="icone-indicador" style="background:var(--amarelo-suave); color:var(--amarelo-alerta);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="custoSaidas">—</div>
+          <div class="nota alerta">Consumo alocado</div>
+        </div>
       </div>
-      <div class="indicador-custo">
-        <div class="rotulo">Custo de entradas no período</div>
-        <div class="valor" id="custoEntradas">—</div>
+      <!-- GRÁFICOS -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(420px, 1fr)); gap:20px; margin-bottom:24px;">
+        <div class="painel" style="margin-bottom:0;">
+          <div class="painel-cabecalho">
+            <h2>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Estoque por Categoria (Unidades)
+            </h2>
+            <span class="sub-titulo" id="ultimaAtualizacao">Atualizando...</span>
+          </div>
+          <div class="painel-corpo" style="height:320px;">
+            <canvas id="graficoCategorias"></canvas>
+          </div>
+        </div>
+        <div class="painel" style="margin-bottom:0;">
+          <div class="painel-cabecalho">
+            <h2>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Custo Financeiro por Categoria (R$)
+            </h2>
+          </div>
+          <div class="painel-corpo" style="height:320px;">
+            <canvas id="graficoCustos"></canvas>
+          </div>
+        </div>
       </div>
-      <div class="indicador-custo">
-        <div class="rotulo">Custo de saídas no período</div>
-        <div class="valor" id="custoSaidas">—</div>
+      <!-- TABELA DE ITENS CRÍTICOS -->
+      <div class="painel">
+        <div class="painel-cabecalho">
+          <h2>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Itens Críticos (Abaixo ou no Limite do Estoque Mínimo)
+          </h2>
+          <span class="sub-titulo">Alerta antecipado para solicitação de compra</span>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Categoria</th>
+                <th>Almoxarifado</th>
+                <th>Saldo Atual</th>
+                <th>Estoque Mínimo</th>
+                <th>Custo Estimado de Reposição</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaItensCriticos"></tbody>
+          </table>
+          <div id="semItensCriticos" class="empty" style="display:none;">Excelente! Nenhum item com saldo abaixo do estoque mínimo.</div>
+        </div>
       </div>
-    </div>
-
-    <div class="painel" style="margin-bottom:24px;">
-      <div class="painel-cabecalho">
-        <h2>Estoque por categoria</h2>
-        <span class="link-ver-tudo" id="ultimaAtualizacao">Atualizando...</span>
-      </div>
-      <div style="padding:24px; height:340px;">
-        <canvas id="graficoCategorias"></canvas>
-      </div>
-    </div>
-
-    <div class="painel" style="margin-bottom:24px;">
-      <div class="painel-cabecalho">
-        <h2>Custo por categoria</h2>
-      </div>
-      <div style="padding:24px; height:340px;">
-        <canvas id="graficoCustos"></canvas>
-      </div>
-    </div>
-
-    <div class="painel">
-      <div class="painel-cabecalho">
-        <h2>Itens abaixo do estoque mínimo</h2>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Categoria</th>
-            <th>Escola</th>
-            <th>Quantidade</th>
-            <th>Mínimo</th>
-            <th>Custo de reposição</th>
-          </tr>
-        </thead>
-        <tbody id="tabelaItensCriticos">
-        </tbody>
-      </table>
-      <div id="semItensCriticos" class="vazio-lista" style="display:none;">
-        Nenhum item abaixo do mínimo no momento.
-      </div>
-    </div>
-  </main>
-
+    </main>
+  </div>
   <footer class="rodape">
     <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Todos os direitos reservados</span>
   </footer>
-
-  <script src="js/Relatorio.js"></script>
 </body>
 </html>

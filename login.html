@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso ao Sistema — SGE Educação</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="identidade">
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">SGE — Sistema de Gestão Escolar</div>
+      </div>
+    </div>
+  </header>
+  <main class="area-auth">
+    <div class="card-auth">
+      <div class="card-auth-cabecalho">
+        <span class="badge-auth">Portal Institucional</span>
+        <h1>Acessar o Sistema</h1>
+        <p>Entre com seu usuário ou e-mail institucional para continuar.</p>
+      </div>
+      <form id="formLogin" onsubmit="return realizarLogin(event)">
+        <div class="form-campo">
+          <label for="usuario">Usuário ou E-mail Institucional</label>
+          <input type="text" id="usuario" placeholder="seu.usuario ou email@sme.gov.br" autocomplete="username" required>
+        </div>
+        <div class="form-campo">
+          <label for="senha">Senha de Acesso</label>
+          <div class="campo-senha">
+            <input type="password" id="senha" placeholder="••••••••" autocomplete="current-password" required>
+            <button type="button" class="btn-mostrar-senha" onclick="alternarSenha()" id="btnMostrarSenha">Mostrar</button>
+          </div>
+        </div>
+        <div class="linha-opcoes">
+          <label class="opcao-lembrar">
+            <input type="checkbox" id="lembrar" checked>
+            <span>Manter conectado</span>
+          </label>
+          <a href="esqueceu-senha.html" class="link-destaque">Esqueci minha senha</a>
+        </div>
+        <button type="submit" class="btn-submit-auth btn-entrar">Entrar no Sistema</button>
+        <div id="mensagemLogin" class="mensagem-status"></div>
+        <div class="divisor-auth"><span>ou</span></div>
+        <div class="auth-rodape-links">
+          Novo servidor na rede? <a href="cadastro.html" class="link-destaque">Criar conta institucional</a>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Todos os direitos reservados</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar Conta — SGE Educação</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="identidade">
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">SGE — Sistema de Gestão de Estoque e Merenda</div>
+      </div>
+    </div>
+  </header>
+  <main class="area-auth">
+    <div class="card-auth">
+      <div class="card-auth-cabecalho">
+        <span class="badge-auth">Acesso Institucional</span>
+        <h1>Criar Conta de Acesso</h1>
+        <p>Preencha seus dados para cadastrar seu usuário no sistema SGE.</p>
+      </div>
+      <form id="formCadastro" onsubmit="return realizarCadastro(event)">
+        <div class="form-campo">
+          <label for="cadNome">Nome Completo *</label>
+          <input type="text" id="cadNome" placeholder="Ex: Maria Alice dos Santos" required>
+        </div>
+        <div class="form-row">
+          <div class="form-campo">
+            <label for="cadCpf">CPF *</label>
+            <input type="text" id="cadCpf" placeholder="000.000.000-00" maxlength="14" required oninput="mascaraCPF(this)">
+          </div>
+          <div class="form-campo">
+            <label for="cadCargo">Cargo *</label>
+            <select id="cadCargo" required>
+              <option value="">Selecione o cargo...</option>
+              <option value="Secretário">Secretário</option>
+              <option value="Almoxarifado">Almoxarifado</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-campo">
+            <label for="cadEmail">E-mail *</label>
+            <input type="email" id="cadEmail" placeholder="nome@sme.gov.br" required>
+          </div>
+          <div class="form-campo">
+            <label for="cadUsuario">Nome de Usuário (Login) *</label>
+            <input type="text" id="cadUsuario" placeholder="ex: maria.santos" autocomplete="username" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-campo">
+            <label for="cadSenha">Definir Senha *</label>
+            <div class="campo-senha">
+              <input type="password" id="cadSenha" placeholder="Mínimo 6 dígitos" required oninput="avaliarForcaSenha()">
+              <button type="button" class="btn-mostrar-senha" onclick="alternarVisibilidadeSenha('cadSenha', this)">Mostrar</button>
+            </div>
+            <div class="medidor-senha">
+              <div class="barra-forca"><div class="barra-forca-progresso" id="barraForca"></div></div>
+              <span class="texto-forca" id="textoForca"></span>
+            </div>
+          </div>
+          <div class="form-campo">
+            <label for="cadSenhaConfirm">Confirmar Senha *</label>
+            <div class="campo-senha">
+              <input type="password" id="cadSenhaConfirm" placeholder="Repita a senha" required>
+              <button type="button" class="btn-mostrar-senha" onclick="alternarVisibilidadeSenha('cadSenhaConfirm', this)">Mostrar</button>
+            </div>
+          </div>
+        </div>
+        <div style="margin: 10px 0 18px;">
+          <label class="opcao-lembrar" style="align-items:flex-start;">
+            <input type="checkbox" id="aceiteTermos" required style="margin-top:4px;">
+            <span style="font-size:12.5px; color:var(--texto-secundario); line-height:1.4;">
+              Declaro que as informações prestadas são verídicas e concordo com os Termos de Uso e Política de Privacidade.
+            </span>
+          </label>
+        </div>
+        <button type="submit" class="btn-submit-auth" id="btnCadastrar">Cadastrar Conta</button>
+        <div id="mensagemCadastro" class="mensagem-status"></div>
+        <div class="divisor-auth"><span>ou</span></div>
+        <div class="auth-rodape-links">
+          Já tem conta cadastrada? <a href="login.html" class="link-destaque">Acessar o SGE</a>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Todos os direitos reservados</span>
+  </footer>
+</body>
+</html>

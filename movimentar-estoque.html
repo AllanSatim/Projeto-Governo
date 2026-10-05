@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimentar Estoque — SGE Educação</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="identidade">
+      <button class="btn-menu-mobile" onclick="document.getElementById('menuLateral').classList.toggle('aberta')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">Movimentação de Estoque E/S</div>
+      </div>
+    </div>
+    <div class="topo-acoes">
+      <a href="login.html" class="btn-sair-topo">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sair
+      </a>
+    </div>
+  </header>
+  <div class="corpo">
+    <!-- NAVEGAÇÃO LATERAL UNIFICADA -->
+    <nav class="lateral" id="menuLateral">
+      <div class="lateral-conteudo">
+        <div class="grupo-titulo">PAINEL PRINCIPAL</div>
+        <ul>
+          <li><a href="index.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Início / Painel Geral
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">GESTÃO ESCOLAR</div>
+        <ul>
+          <li><a href="Estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              Estoque Geral
+            </span>
+          </a></li>
+          <li><a class="ativo" href="movimentar-estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+              Movimentar Estoque
+            </span>
+          </a></li>
+          <li><a href="Merenda.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+              Merenda Escolar
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">FINANÇAS & CONTAS</div>
+        <ul>
+          <li><a href="financeiro.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Painel Financeiro
+            </span>
+          </a></li>
+          <li><a href="Relatorio.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
+              Relatórios & Custos
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">ADMINISTRAÇÃO & ACESSO</div>
+        <ul>
+          <li><a href="usuario.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Meu Perfil
+            </span>
+          </a></li>
+          <li><a href="admin.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Painel do Admin
+            </span>
+          </a></li>
+          <li class="item-configuracoes-removido"><a href="configuracoes.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+              Configurações
+            </span>
+          </a></li>
+          <li><a href="Suporte.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Suporte Técnico
+            </span>
+          </a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo">
+      <div class="trilha">
+        <a href="index.html">Início</a>
+        <span class="separador">/</span>
+        <a href="Estoque.html">Estoque</a>
+        <span class="separador">/</span>
+        <span class="pagina-atual">Movimentar Estoque (E/S)</span>
+      </div>
+      <div class="cabecalho-pagina">
+        <div>
+          <h1 class="titulo-pagina">Movimentação Independente de Estoque</h1>
+          <p class="subtitulo-pagina">Registre entradas de notas fiscais, saídas, consumos e devoluções com controle de lote e custos.</p>
+        </div>
+        <div class="acoes-pagina">
+          <a href="Estoque.html" class="btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Voltar ao Estoque Geral
+          </a>
+          <button class="btn-exportar" onclick="exportarHistoricoCSV()">⇩ Exportar CSV</button>
+        </div>
+      </div>
+      <!-- CARDS DE KPIS DA MOVIMENTAÇÃO -->
+      <div class="indicadores">
+        <div class="indicador indicador-sucesso">
+          <div class="topo-indicador">
+            <span class="rotulo">Entradas de Hoje</span>
+            <div class="icone-indicador" style="background:var(--verde-suave); color:var(--verde-educacao);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiEntradasHoje">0 un.</div>
+          <div class="nota ok">Entradas processadas</div>
+        </div>
+        <div class="indicador indicador-alerta">
+          <div class="topo-indicador">
+            <span class="rotulo">Saídas de Hoje</span>
+            <div class="icone-indicador" style="background:var(--amarelo-suave); color:var(--amarelo-alerta);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiSaidasHoje">0 un.</div>
+          <div class="nota alerta">Consumo e entregas</div>
+        </div>
+        <div class="indicador">
+          <div class="topo-indicador">
+            <span class="rotulo">Valor Total de Entradas</span>
+            <div class="icone-indicador">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiEntradasValor">R$ 0,00</div>
+          <div class="nota ok">Suprimentos recebidos</div>
+        </div>
+        <div class="indicador">
+          <div class="topo-indicador">
+            <span class="rotulo">Valor Total de Saídas</span>
+            <div class="icone-indicador">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiSaidasValor">R$ 0,00</div>
+          <div class="nota neutro">Custos alocados</div>
+        </div>
+      </div>
+      <!-- LAYOUT EM DUAS COLUNAS: FORMULÁRIO DEDICADO + TABELA DE HISTÓRICO -->
+      <div class="container-duas-colunas">
+        <!-- COLUNA 1: FORMULÁRIO COMPLETO DE MOVIMENTAÇÃO -->
+        <div class="painel">
+          <div class="painel-cabecalho">
+            <h2>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Nova Movimentação
+            </h2>
+            <span class="sub-titulo">Registro em tempo real</span>
+          </div>
+          <div class="painel-corpo">
+            <form id="formMovimentar" onsubmit="return registrarMovimentacao(event)">
+              <!-- SELETOR DE TIPO COM BOTÕES RADIO ESTILIZADOS -->
+              <div class="form-campo">
+                <label>Tipo de Operação *</label>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                  <label style="border:1px solid var(--cinza-linha); padding:10px 12px; border-radius:var(--radius-sm); display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600; background:#FAFCFE;">
+                    <input type="radio" name="tipoMov" value="entrada" checked onchange="atualizarPrevisaoEstoque()">
+                    <span style="color:var(--verde-educacao);">⬇ Entrada (NF)</span>
+                  </label>
+                  <label style="border:1px solid var(--cinza-linha); padding:10px 12px; border-radius:var(--radius-sm); display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:600; background:#FAFCFE;">
+                    <input type="radio" name="tipoMov" value="saida" onchange="atualizarPrevisaoEstoque()">
+                    <span style="color:var(--amarelo-alerta);">⬆ Saída (Consumo/Distribuição)</span>
+                  </label>
+                </div>
+              </div>
+              <!-- SELEÇÃO DE PRODUTO -->
+              <div class="form-campo">
+                <label for="moveProduto">Produto / Item *</label>
+                <select id="moveProduto" required onchange="atualizarPrevisaoEstoque()"></select>
+              </div>
+              <!-- PAINEL PREVISÃO DE ESTOQUE DINÂMICO -->
+              <div id="previsaoEstoque" style="display:none; background:var(--azul-claro); border:1px solid #BAE6FD; border-radius:var(--radius-sm); padding:12px; margin-bottom:16px; font-size:13px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                  <span>Estoque Atual: <strong id="prevEstoqueAtual">—</strong></span>
+                  <span>Mínimo: <strong id="prevEstoqueMinimo">—</strong></span>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                  <span>Saldo Previsto Após Operação:</span>
+                  <strong id="prevNovoEstoque" style="font-size:14px;">—</strong>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-campo">
+                  <label for="moveQuantidade">Quantidade *</label>
+                  <input type="number" id="moveQuantidade" min="1" value="1" required oninput="atualizarPrevisaoEstoque()">
+                </div>
+                <div class="form-campo">
+                  <label for="moveCustoUnitario">Custo Unitário (R$)</label>
+                  <input type="number" id="moveCustoUnitario" step="0.01" min="0" value="0.00" oninput="atualizarPrevisaoEstoque()">
+                </div>
+              </div>
+              <div style="font-size:13px; color:var(--texto-secundario); margin-bottom:14px;">
+                Custo Total Estimado: <strong id="moveCustoTotalCalculado" style="color:var(--azul-institucional);">R$ 0,00</strong>
+              </div>
+              <div class="form-campo">
+                <label for="moveDestino">Destino / Origem *</label>
+                <input type="text" id="moveDestino" placeholder="Ex: Setor Pedagógico ou Fornecedor ABC" required>
+              </div>
+              <div class="form-campo">
+                <label for="moveNotaFiscal">Nota Fiscal / Guia de Remessa</label>
+                <input type="text" id="moveNotaFiscal" placeholder="Ex: NF-e 84219 ou REQ-2026-04">
+              </div>
+              <div class="form-campo">
+                <label for="moveResponsavel">Responsável pelo Registro *</label>
+                <input type="text" id="moveResponsavel" value="Carlos Silva" required>
+              </div>
+              <div class="form-campo">
+                <label for="moveObservacao">Observações / Justificativa</label>
+                <textarea id="moveObservacao" rows="2" placeholder="Informações adicionais do processo ou conferência"></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%; padding:12px;">Efetivar Movimentação</button>
+            </form>
+          </div>
+        </div>
+        <!-- COLUNA 2: HISTÓRICO COM FILTROS AVANÇADOS -->
+        <div class="painel">
+          <div class="painel-cabecalho">
+            <h2>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+              Histórico Geral de Movimentações
+            </h2>
+            <span class="sub-titulo">Registro contábil de transferências</span>
+          </div>
+          <!-- FILTROS -->
+          <div class="toolbar" style="padding:14px 20px;">
+            <div style="display:flex; gap:10px; flex-wrap:wrap; width:100%;">
+              <input type="date" id="filtroDataInicio" title="Data inicial" onchange="renderizarHistorico()" style="max-width:150px;">
+              <input type="date" id="filtroDataFim" title="Data final" onchange="renderizarHistorico()" style="max-width:150px;">
+              <select id="filtroProduto" onchange="renderizarHistorico()" style="max-width:200px;">
+                <option value="">Todos os produtos</option>
+              </select>
+              <select id="filtroTipo" onchange="renderizarHistorico()" style="max-width:140px;">
+                <option value="">Todos os tipos</option>
+                <option value="entrada">Entradas</option>
+                <option value="saida">Saídas</option>
+              </select>
+              <input type="text" id="filtroResponsavel" placeholder="Responsável..." oninput="renderizarHistorico()" style="max-width:140px;">
+              <button class="btn-limpar" onclick="limparFiltrosHistorico()">Limpar</button>
+            </div>
+          </div>
+          <div style="padding:10px 20px 0;">
+            <div id="resumoHistoricoFiltro" class="resumo-filtro" style="margin-bottom:0;"></div>
+          </div>
+          <div class="tabela-responsiva">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Produto / NF</th>
+                  <th>Tipo</th>
+                  <th>Quantidade</th>
+                  <th>Custo Total</th>
+                  <th>Destino/Origem</th>
+                  <th>Responsável</th>
+                </tr>
+              </thead>
+              <tbody id="tabelaHistoricoBody"></tbody>
+            </table>
+            <div id="emptyHistorico" class="empty" style="display:none;">Nenhuma movimentação registrada para os critérios informados.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Todos os direitos reservados</span>
+  </footer>
+</body>
+</html>

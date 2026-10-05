@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo — SGE Educação</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="identidade">
+      <button class="btn-menu-mobile" onclick="document.getElementById('menuLateral').classList.toggle('aberta')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="brasao">SME</div>
+      <div class="nomes">
+        <div class="orgao">Secretaria Municipal de Educação</div>
+        <div class="sistema">Painel do Administrador Geral</div>
+      </div>
+    </div>
+    <div class="topo-acoes">
+      <a href="login.html" class="btn-sair-topo">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sair
+      </a>
+    </div>
+  </header>
+  <div class="corpo">
+    <!-- NAVEGAÇÃO LATERAL UNIFICADA -->
+    <nav class="lateral" id="menuLateral">
+      <div class="lateral-conteudo">
+        <div class="grupo-titulo">PAINEL PRINCIPAL</div>
+        <ul>
+          <li><a href="index.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Início / Painel Geral
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">GESTÃO DE ESTOQUE</div>
+        <ul>
+          <li><a href="Estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              Estoque de Materiais
+            </span>
+          </a></li>
+          <li><a href="movimentar-estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+              Movimentar Estoque
+            </span>
+          </a></li>
+          <li><a href="Merenda.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+              Estoque de Merenda
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">FINANÇAS & CUSTOS</div>
+        <ul>
+          <li><a href="financeiro.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Relatório Financeiro
+            </span>
+          </a></li>
+          <li><a href="Relatorio.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
+              Relatórios & Reposição
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">ADMINISTRAÇÃO & ACESSO</div>
+        <ul>
+          <li><a href="usuario.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Meu Perfil
+            </span>
+          </a></li>
+          <li><a class="ativo" href="admin.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Painel do Admin
+            </span>
+          </a></li>
+          <li class="item-configuracoes-removido"><a href="configuracoes.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 112.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+              Configurações
+            </span>
+          </a></li>
+          <li><a href="Suporte.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Suporte Técnico
+            </span>
+          </a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="conteudo">
+      <div class="trilha">
+        <a href="index.html">Início</a>
+        <span class="separador">/</span>
+        <span class="pagina-atual">Painel do Administrador</span>
+      </div>
+      <div class="cabecalho-pagina">
+        <div>
+          <h1 class="titulo-pagina">Gestão de Usuários e Permissões</h1>
+          <p class="subtitulo-pagina">Controle de acessos dos servidores com os cargos de Secretário e Almoxarifado.</p>
+        </div>
+      </div>
+      <!-- CARDS DE KPIS DO ADMIN -->
+      <div class="indicadores">
+        <div class="indicador">
+          <div class="topo-indicador">
+            <span class="rotulo">Total de Contas</span>
+            <div class="icone-indicador">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiTotalUsuarios">—</div>
+          <div class="nota neutro">Cadastrados no sistema</div>
+        </div>
+        <div class="indicador indicador-sucesso">
+          <div class="topo-indicador">
+            <span class="rotulo">Usuários Ativos</span>
+            <div class="icone-indicador" style="background:var(--verde-suave); color:var(--verde-educacao);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiUsuariosAtivos">—</div>
+          <div class="nota ok">Operacionais</div>
+        </div>
+        <div class="indicador indicador-alerta">
+          <div class="topo-indicador">
+            <span class="rotulo">Contas Inativas</span>
+            <div class="icone-indicador" style="background:var(--amarelo-suave); color:var(--amarelo-alerta);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiUsuariosBloqueados">—</div>
+          <div class="nota alerta">Acesso desativado</div>
+        </div>
+        <div class="indicador indicador-roxo">
+          <div class="topo-indicador">
+            <span class="rotulo">Secretários</span>
+            <div class="icone-indicador" style="background:var(--roxo-suave); color:var(--roxo-sistema);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiTotalSecretarios">—</div>
+          <div class="nota neutro">Acesso de gestão</div>
+        </div>
+      </div>
+      <div class="painel" id="painelAprovacaoUsuarios" data-approval-queue>
+        <div class="painel-cabecalho">
+          <h2>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+            Novos Usuários Aguardando Aprovação
+          </h2>
+          <span class="sub-titulo" id="totalUsuariosPendentes">0 solicitações</span>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Servidor</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Cargo solicitado</th>
+                <th>Data da solicitação</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="usuariosPendentesBody" aria-live="polite"></tbody>
+          </table>
+          <div id="emptyUsuariosPendentes" class="empty">Nenhum usuário aguardando aprovação.</div>
+        </div>
+      </div>
+      <template id="templateUsuarioPendente">
+        <tr data-usuario-pendente>
+          <td data-campo="nome"></td>
+          <td data-campo="cpf"></td>
+          <td data-campo="email"></td>
+          <td data-campo="cargo"></td>
+          <td data-campo="dataSolicitacao"></td>
+          <td>
+            <div class="acoes-aprovacao">
+              <button type="button" class="btn-success btn-sm" data-acao="aprovar">Aprovar</button>
+              <button type="button" class="btn-danger btn-sm" data-acao="rejeitar">Rejeitar</button>
+            </div>
+          </td>
+        </tr>
+      </template>
+      <!-- TABELA DE GESTÃO DE USUÁRIOS -->
+      <div class="painel">
+        <div class="painel-cabecalho">
+          <h2>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Usuários Cadastrados
+          </h2>
+          <span class="sub-titulo">Gerencie os acessos do sistema</span>
+        </div>
+        <div class="toolbar">
+          <input type="text" id="filtroAdminBusca" placeholder="Buscar por nome, login ou CPF..." oninput="renderizarTabelaUsuarios()">
+          <select id="filtroAdminCargo" onchange="renderizarTabelaUsuarios()">
+            <option value="">Todos os cargos</option>
+            <option value="Secretário">Secretário</option>
+            <option value="Almoxarifado">Almoxarifado</option>
+          </select>
+          <select id="filtroAdminStatus" onchange="renderizarTabelaUsuarios()">
+            <option value="">Todos os status</option>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Servidor / Login</th>
+                <th>CPF</th>
+                <th>E-mail</th>
+                <th>Cargo</th>
+                <th>Status</th>
+                <th>Último Acesso</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaUsuariosAdminBody"></tbody>
+          </table>
+          <div id="emptyUsuariosAdmin" class="empty" style="display:none;">Nenhum usuário encontrado.</div>
+        </div>
+      </div>
+      <template id="templateUsuarioAdmin">
+        <tr data-usuario-admin>
+          <td data-campo="servidorLogin"></td>
+          <td data-campo="cpf"></td>
+          <td data-campo="email"></td>
+          <td data-campo="cargo"></td>
+          <td data-campo="status"></td>
+          <td data-campo="ultimoAcesso"></td>
+          <td>
+            <button type="button" class="btn-danger btn-sm" data-acao="bloquear">Bloquear usuário</button>
+          </td>
+        </tr>
+      </template>
+      <!-- MATRIZ DE PERMISSÕES INSTITUCIONAIS -->
+      <div class="painel">
+        <div class="painel-cabecalho">
+          <h2>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Níveis de Permissão por Cargo
+          </h2>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Cargo</th>
+                <th>Estoque de Materiais</th>
+                <th>Estoque de Merenda</th>
+                <th>Movimentar Estoque</th>
+                <th>Relatório Financeiro</th>
+                <th>Gestão de Usuários</th>
+                <th>Configurações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-admin">Secretário</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-uniformes">Almoxarifado</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Acesso Total</span></td>
+                <td><span class="badge badge-ativo">Consulta Custos</span></td>
+                <td><span class="badge badge-inativo">Sem Acesso</span></td>
+                <td><span class="badge badge-inativo">Sem Acesso</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- TRILHA GERAL DE AUDITORIA -->
+      <div class="painel">
+        <div class="painel-cabecalho">
+          <h2>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Trilha de Auditoria Geral (Logs de Operação)
+          </h2>
+        </div>
+        <div class="tabela-responsiva">
+          <table>
+            <thead>
+              <tr>
+                <th>Data e Hora</th>
+                <th>Usuário Responsável</th>
+                <th>Operação Executada</th>
+                <th>Módulo</th>
+                <th>Endereço IP</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaLogsAuditoriaBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- MODAL: CADASTRAR NOVO USUÁRIO -->
+  <div class="modal-overlay" id="modalNovoUsuario">
+    <div class="modal-box">
+      <div class="modal-cabecalho">
+        <h3>Cadastrar Novo Usuário</h3>
+        <button class="modal-fechar" onclick="fecharModalNovoUsuario()">✕</button>
+      </div>
+      <form id="formNovoUsuario" onsubmit="return salvarNovoUsuario(event)">
+        <div class="modal-corpo">
+          <div class="form-campo">
+            <label for="novoNome">Nome Completo *</label>
+            <input type="text" id="novoNome" placeholder="Ex: Patrícia Alves" required>
+          </div>
+          <div class="form-row">
+            <div class="form-campo">
+              <label for="novoCpf">CPF *</label>
+              <input type="text" id="novoCpf" placeholder="000.000.000-00" maxlength="14" required oninput="mascaraCPF(this)">
+            </div>
+            <div class="form-campo">
+              <label for="novoCargo">Cargo *</label>
+              <select id="novoCargo" required>
+                <option value="Secretário">Secretário</option>
+                <option value="Almoxarifado">Almoxarifado</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-campo">
+              <label for="novoEmail">E-mail *</label>
+              <input type="email" id="novoEmail" placeholder="patricia.alves@sme.gov.br" required>
+            </div>
+            <div class="form-campo">
+              <label for="novoLogin">Login de Acesso *</label>
+              <input type="text" id="novoLogin" placeholder="patricia.alves" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-rodape">
+          <button type="button" class="btn-secondary" onclick="fecharModalNovoUsuario()">Cancelar</button>
+          <button type="submit" class="btn-primary">Criar Usuário</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="rodape">
+    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Todos os direitos reservados</span>
+  </footer>
+</body>
+</html>

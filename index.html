@@ -1,134 +1,252 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SGE Educação — Sistema de Gestão</title>
-<link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGE Educação — Sistema de Gestão Escolar Integrada</title>
+  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="pg-inicio">
-
-  <div class="barra-gov">
-    <span>Prefeitura Municipal • Secretaria Municipal de Educação</span>
-    
-  </div>
-
+<body>
   <header class="topo">
     <div class="identidade">
+      <button class="btn-menu-mobile" onclick="document.getElementById('menuLateral').classList.toggle('aberta')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
       <div class="brasao">SME</div>
       <div class="nomes">
         <div class="orgao">Secretaria Municipal de Educação</div>
-        <div class="sistema">SGE — Sistema de Gestão</div>
+        <div class="sistema">SGE — Sistema de Gestão Escolar</div>
       </div>
     </div>
-    
+    <div class="topo-acoes">
+      <a href="login.html" class="btn-sair-topo" title="Sair do sistema">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Sair
+      </a>
+    </div>
   </header>
-
   <div class="corpo">
-    <nav class="lateral">
-      <ul>
-        <li><a class="ativo" href="index.html">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          Início
-        </a></li>
-      </ul>
-
-      <div class="grupo-titulo">GESTÃO ESCOLAR</div>
-      <ul>
-        <li><a href="Estoque.html">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          Estoque E/S
-        </a></li>
-        <li><a href="Merenda.html">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v14H7l-4 4V3z"/></svg>
-          Merenda Escolar
-        </a></li>
-        
-      </ul>
-
-      <div class="grupo-titulo">RELATÓRIOS E FINANÇAS</div>
-      <ul>
-        <li><a href="Relatorio.html">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
-          Relatórios
-        </a></li>
-      </ul>
-
-      <div class="grupo-titulo">SISTEMA</div>
-      <ul>
-        <li><a href="Suporte.html">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
-          Suporte Técnico
-        </a></li>
-      </ul>
+    <!-- NAVEGAÇÃO LATERAL UNIFICADA -->
+    <nav class="lateral" id="menuLateral">
+      <div class="lateral-conteudo">
+        <div class="grupo-titulo">PAINEL PRINCIPAL</div>
+        <ul>
+          <li><a class="ativo" href="index.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Início / Painel Geral
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">GESTÃO ESCOLAR</div>
+        <ul>
+          <li><a href="Estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+              Estoque Geral
+            </span>
+          </a></li>
+          <li><a href="movimentar-estoque.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+              Movimentar Estoque
+            </span>
+          </a></li>
+          <li><a href="Merenda.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+              Merenda Escolar
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">FINANÇAS & CONTAS</div>
+        <ul>
+          <li><a href="financeiro.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Painel Financeiro
+            </span>
+          </a></li>
+          <li><a href="Relatorio.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
+              Relatórios & Custos
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">ADMINISTRAÇÃO & ACESSO</div>
+        <ul>
+          <li><a href="usuario.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Meu Perfil
+            </span>
+          </a></li>
+          <li><a href="admin.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Painel do Admin
+            </span>
+          </a></li>
+          <li class="item-configuracoes-removido"><a href="configuracoes.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 112.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06-.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+              Configurações
+            </span>
+          </a></li>
+          <li><a href="Suporte.html">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Suporte Técnico
+            </span>
+          </a></li>
+        </ul>
+      </div>
     </nav>
-
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="conteudo">
-      <div class="trilha">Início <span>/ Painel geral</span></div>
-      <h1 class="titulo-pagina">Painel geral</h1>
-      <p class="subtitulo-pagina">Visão consolidada do estoque, matrículas e prestação de contas da rede municipal.</p>
-
-            <div class="indicadores">
-        <div class="indicador">
-          <div class="rotulo">Itens em estoque</div>
-          <div class="valor mono" id="qtdItensEstoque">—</div>
-          <div class="nota ok" id="notaItensEstoque">Carregando...</div>
+      <div class="trilha">
+        <span>Início</span>
+        <span class="separador">/</span>
+        <span class="pagina-atual">Painel Geral</span>
+      </div>
+      <div class="cabecalho-pagina">
+        <div>
+          <h1 class="titulo-pagina">Painel Geral da Educação Municipal</h1>
+          <p class="subtitulo-pagina">Visão consolidada do estoque de materiais, merenda escolar, cálculo do custo total em estoque e custos das saídas.</p>
         </div>
-        <div class="indicador">
-          <div class="rotulo">Itens abaixo do mínimo</div>
-          <div class="valor mono" id="qtdItensBaixo">—</div>
-          <div class="nota alerta" id="notaItensBaixo">Carregando...</div>
-        </div>
-        <div class="indicador">
-          <div class="rotulo">Escolas atendidas</div>
-          <div class="valor mono" id="qtdEscolas">—</div>
-          <div class="nota ok" id="notaEscolas">Carregando...</div>
-        </div>
-        <div class="indicador">
-          <div class="rotulo">Escolas pendentes</div>
-          <div class="valor mono" id="qtdRelatorios">—</div>
-          <div class="nota alerta" id="notaRelatorios">Carregando...</div>
+        <div class="acoes-pagina">
+          <a href="movimentar-estoque.html" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
+            Movimentar Estoque
+          </a>
+          <a href="financeiro.html" class="btn-outline">Ver Financeiro</a>
         </div>
       </div>
-      <div class="secao-titulo">Módulos</div>
+      <!-- CARDS DE KPIS GERAIS: CUSTO TOTAL (MATERIAIS + MERENDA) E SAÍDAS -->
+      <div class="indicadores">
+        <div class="indicador indicador-sucesso">
+          <div class="topo-indicador">
+            <span class="rotulo">Custo Total em Estoque</span>
+            <div class="icone-indicador" style="background:var(--verde-suave); color:var(--verde-educacao);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiCustoTotalEstoque">R$ 0,00</div>
+          <div class="nota ok" id="kpiNotaCustoTotalEstoque">Materiais + Merenda</div>
+        </div>
+        <div class="indicador">
+          <div class="topo-indicador">
+            <span class="rotulo">Custo Estoque de Materiais</span>
+            <div class="icone-indicador">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiCustoMateriais">R$ 0,00</div>
+          <div class="nota neutro" id="kpiNotaMateriais">Almoxarifado & Didáticos</div>
+        </div>
+        <div class="indicador indicador-roxo">
+          <div class="topo-indicador">
+            <span class="rotulo">Custo Estoque de Merenda</span>
+            <div class="icone-indicador" style="background:var(--roxo-suave); color:var(--roxo-sistema);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiCustoMerenda">R$ 0,00</div>
+          <div class="nota ok" id="kpiNotaMerenda">Alimentação Escolar</div>
+        </div>
+        <div class="indicador indicador-alerta">
+          <div class="topo-indicador">
+            <span class="rotulo">Custo Total das Saídas</span>
+            <div class="icone-indicador" style="background:var(--amarelo-suave); color:var(--amarelo-alerta);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </div>
+          </div>
+          <div class="valor mono" id="kpiCustoSaidas">R$ 0,00</div>
+          <div class="nota alerta" id="kpiNotaSaidas">Distribuição & Consumo</div>
+        </div>
+      </div>
+      <!-- MÓDULOS DE ACESSO RÁPIDO -->
+      <div class="secao-titulo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Módulos Integrados do Sistema
+      </div>
       <div class="modulos">
-        <div class="modulo">
+        <a href="Estoque.html" class="modulo">
           <div class="icone-modulo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
           </div>
-          <div class="nome-modulo">Estoque e Almoxarifado</div>
-          <div class="desc-modulo">Registrar entradas, saídas</div>
-        </div>
-        <div class="modulo">
+          <div class="nome-modulo">Estoque Geral & Almoxarifado</div>
+          <div class="desc-modulo">Cadastro de materiais didáticos, uniformes escolares, controle de custos e saldos mínimos.</div>
+          <div class="link-modulo">Acessar módulo →</div>
+        </a>
+        <a href="movimentar-estoque.html" class="modulo">
           <div class="icone-modulo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
           </div>
-          <div class="nome-modulo">Merenda Escolar</div>
-          <div class="desc-modulo">Gerar a quantidade de alimentos recebidos.</div>
-        </div>
-        <div class="modulo">
+          <div class="nome-modulo">
+            Movimentar Estoque (E/S)
+          </div>
+          <div class="desc-modulo">Tela dedicada para dar entradas via Nota Fiscal e saídas com controle de destino escolar.</div>
+          <div class="link-modulo">Abrir movimentação →</div>
+        </a>
+        <a href="Merenda.html" class="modulo">
           <div class="icone-modulo">
-             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
           </div>
-          <div class="nome-modulo">Relatórios automáticos</div>
-          <div class="desc-modulo">Gerar relatórios mensais de quantidade de estoque de materiais.</div>
-        </div>
-        <div class="modulo">
+          <div class="nome-modulo">Merenda Escolar (PNAE)</div>
+          <div class="desc-modulo">Registro de alimentos recebidos no mês, controle de perecíveis e fornecedores da alimentação.</div>
+          <div class="link-modulo">Acessar merenda →</div>
+        </a>
+        <a href="financeiro.html" class="modulo">
           <div class="icone-modulo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <div class="nome-modulo">Suporte técnico</div>
-          <div class="desc-modulo">Abrir chamado ou consultar respostas de dúvidas frequentes.</div>
-        </div>
+          <div class="nome-modulo">
+            Gestão Financeira
+          </div>
+          <div class="desc-modulo">Soma consolidada do estoque de materiais e merenda escolar, custo total em estoque e custos das saídas.</div>
+          <div class="link-modulo">Acessar finanças →</div>
+        </a>
+        <a href="Relatorio.html" class="modulo">
+          <div class="icone-modulo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
+          </div>
+          <div class="nome-modulo">Relatórios & Análise de Custos</div>
+          <div class="desc-modulo">Gráficos de volumetria, custos por categoria e alertas automáticos de reposição de itens.</div>
+          <div class="link-modulo">Ver relatórios →</div>
+        </a>
+        <a href="usuario.html" class="modulo">
+          <div class="icone-modulo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div class="nome-modulo">Meu Perfil</div>
+          <div class="desc-modulo">Consulte e atualize seus dados pessoais e as informações da sua conta.</div>
+          <div class="link-modulo">Acessar meu perfil →</div>
+        </a>
+        <a href="configuracoes.html" class="modulo modulo-configuracoes-removido">
+          <div class="icone-modulo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 112.83-2.83l.06-.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
+          </div>
+          <div class="nome-modulo">Configurações do Site</div>
+          <div class="desc-modulo">Parâmetros institucionais, regras de estoque mínimo, temas visuais e exportação de backups.</div>
+          <div class="link-modulo">Ajustar sistema →</div>
+        </a>
+        <a href="Suporte.html" class="modulo">
+          <div class="icone-modulo">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="nome-modulo">Suporte & Ajuda Técnica</div>
+          <div class="desc-modulo">Abertura de chamados, dúvidas frequentes (FAQ), contatos da equipe técnica da SME.</div>
+          <div class="link-modulo">Obter auxílio →</div>
+        </a>
       </div>
     </main>
   </div>
-
   <footer class="rodape">
     <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Todos os direitos reservados</span>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
