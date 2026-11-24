@@ -1,2 +1,33 @@
-node_modules
+
+# DEPENDENCIAS NODE.JS
+node_modules/
+
+# CONFIGURACOES PRIVADAS
 .env
+.env.*
+!.env.example
+!.env.xampp.example
+
+# DADOS LOCAIS
+data/sge.json
+data/sge.json.tmp
+
+# LOGS
+*.log
+npm-debug.log*
+logs/
+
+# ARQUIVOS TEMPORARIOS
+*.tmp
+*.temp
+.cache/
+
+# TESTES
+coverage/
+
+# ARQUIVOS DO WINDOWS
+Thumbs.db
+desktop.ini
+
+# ARQUIVOS DO MACOS
+.DS_Store

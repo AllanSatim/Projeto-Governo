@@ -1,90 +1,242 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recuperar Senha — SGE Educação</title>
-  <script src="js/theme.js"></script>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header class="topo">
-    <div class="identidade">
-      <div class="brasao">SME</div>
-      <div class="nomes">
-        <div class="orgao">Secretaria Municipal de Educação</div>
-        <div class="sistema">SGE — Sistema de Gestão Escolar</div>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Identidade visual: símbolo utilizado também na aba do navegador. -->
+    <link rel="icon" type="image/png" href="assets/sge-simbolo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar Senha — SGE Educação</title>
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Ajustes de identidade visual, acessibilidade e layout responsivo. -->
+    <link rel="stylesheet" href="css/refinements.css" />
+  </head>
+  <body>
+    <!-- Atalho de acessibilidade: teclado pode saltar a navegação e chegar ao conteúdo. -->
+    <a class="skip-link" href="#conteudoPrincipal">Ir para o conteúdo</a>
+    <!-- Barra superior, identidade do produto e ações da conta. -->
+    <header class="topo">
+      <div class="identidade">
+        <div class="brasao" aria-label="Logomarca SGE">
+          <img
+            src="assets/sge-simbolo.png"
+            alt="Símbolo do SGE Educação"
+            width="52"
+            height="52"
+          />
+        </div>
+        <div class="nomes">
+          <div class="orgao">Secretaria Municipal de Educação</div>
+          <div class="sistema">SGE — Sistema de Gestão Escolar</div>
+        </div>
       </div>
-    </div>
-  </header>
-  <main class="area-auth">
-    <div class="card-auth">
-      <div class="card-auth-cabecalho">
-        <span class="badge-auth">Segurança de Acesso</span>
-        <h1 id="tituloRecuperacao">Recuperar Acesso</h1>
-        <p id="subtituloRecuperacao">Informe seu e-mail institucional ou matrícula funcional para redefinir sua credencial.</p>
-      </div>
-      <!-- ETAPA 1: Identificação -->
-      <form id="formEtapa1" onsubmit="return avancarEtapa1(event)">
-        <div class="form-campo">
-          <label for="recEmail">E-mail Institucional ou Matrícula</label>
-          <input type="text" id="recEmail" placeholder="seu.email@sme.gov.br ou matrícula" required>
-          <span class="campo-ajuda">Enviaremos um código de validação institucional.</span>
+    </header>
+    <!-- Conteúdo principal: indicadores, filtros, tabelas e formulários desta tela. -->
+    <main id="conteudoPrincipal" class="area-auth">
+      <!-- Painel de boas-vindas visual; os dados reais continuam no formulário ao lado. -->
+      <aside class="auth-showcase" aria-label="Apresentação do SGE">
+        <div class="showcase-eyebrow">
+          <span class="status-dot" aria-hidden="true"></span> SGE EDUCAÇÃO
         </div>
-        <button type="submit" class="btn-submit-auth" id="btnEnviarCodigo">Enviar Código de Redefinição</button>
-        <div id="mensagemEtapa1" class="mensagem-status"></div>
-        <div class="divisor-auth"><span>ou</span></div>
-        <div class="auth-rodape-links">
-          Lembrou a senha? <a href="login.html" class="link-destaque">Voltar ao login</a>
+        <div
+          class="showcase-art"
+          aria-label="Identidade visual do SGE Educação"
+        >
+          <img
+            src="assets/sge-marca-completa.webp"
+            alt="SGE Educação — Sistema de Gestão Educacional"
+            width="330"
+            height="135"
+          />
         </div>
-      </form>
-      <!-- ETAPA 2: Validação de Código e Nova Senha -->
-      <form id="formEtapa2" style="display:none;" onsubmit="return finalizarRedefinicao(event)">
-        <div style="background:var(--azul-claro); padding:12px 14px; border-radius:var(--radius-sm); margin-bottom:16px; font-size:13px; color:var(--azul-institucional);">
-          Código de verificação enviado! Para fins de teste/demonstração, o código é: <strong id="codigoDemo">842190</strong>
-        </div>
-        <div class="form-campo">
-          <label for="codigoVerificacao">Código de 6 Dígitos *</label>
-          <input type="text" id="codigoVerificacao" placeholder="Ex: 842190" maxlength="6" style="letter-spacing:4px; font-size:16px; text-align:center;" required>
-        </div>
-        <div class="form-campo">
-          <label for="novaSenha">Nova Senha *</label>
-          <div class="campo-senha">
-            <input type="password" id="novaSenha" placeholder="Mínimo 6 dígitos" required>
-            <button type="button" class="btn-mostrar-senha" onclick="alternarVisibilidade('novaSenha', this)">Mostrar</button>
-          </div>
-        </div>
-        <div class="form-campo">
-          <label for="confirmaNovaSenha">Confirmar Nova Senha *</label>
-          <div class="campo-senha">
-            <input type="password" id="confirmaNovaSenha" placeholder="Repita a nova senha" required>
-            <button type="button" class="btn-mostrar-senha" onclick="alternarVisibilidade('confirmaNovaSenha', this)">Mostrar</button>
-          </div>
-        </div>
-        <button type="submit" class="btn-submit-auth" id="btnSalvarNovaSenha">Salvar Nova Senha</button>
-        <div id="mensagemEtapa2" class="mensagem-status"></div>
-        <div style="text-align:center; margin-top:16px;">
-          <a href="#" onclick="reiniciarProcesso()" style="font-size:13px; color:var(--texto-mutado); text-decoration:underline;">
-            Tentar outro e-mail
-          </a>
-        </div>
-      </form>
-      <!-- SUCESSO -->
-      <div id="blocoSucesso" style="display:none; text-align:center; padding:10px 0;">
-        <div style="width:60px; height:60px; border-radius:50%; background:var(--verde-suave); color:var(--verde-educacao); font-size:28px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
-          ✓
-        </div>
-        <h2 style="font-size:1.3rem; color:var(--texto-principal); margin-bottom:8px;">Senha Atualizada!</h2>
-        <p style="font-size:14px; color:var(--texto-secundario); margin-bottom:24px;">
-          Sua credencial de acesso foi redefinida com segurança. Utilize a nova senha para acessar o sistema SGE.
+        <h2>
+          Uma gestão mais clara.<br /><span>Uma educação mais forte.</span>
+        </h2>
+        <p>
+          Uma única plataforma para acompanhar recursos, merenda, movimentações
+          e a rotina da rede de ensino.
         </p>
-        <a href="login.html" class="btn-primary" style="width:100%; display:inline-block;">Ir para a Tela de Login</a>
+        <div class="showcase-points">
+          <span>01 · Gestão integrada</span
+          ><span>02 · Informações organizadas</span
+          ><span>03 · Decisões com clareza</span>
+        </div>
+      </aside>
+
+      <div class="card-auth">
+        <div class="card-auth-cabecalho">
+          <span class="badge-auth">Segurança de Acesso</span>
+          <h1 id="tituloRecuperacao">Recuperar Acesso</h1>
+          <p id="subtituloRecuperacao">
+            Informe seu e-mail institucional ou matrícula funcional para
+            redefinir sua credencial.
+          </p>
+        </div>
+        <!-- ETAPA 1: Identificação -->
+        <!-- Formulário: validação dos campos e envio pela camada JavaScript. -->
+        <form id="formEtapa1" onsubmit="return avancarEtapa1(event);">
+          <div class="form-campo">
+            <label for="recEmail">E-mail Institucional ou Matrícula</label>
+            <input
+              type="text"
+              id="recEmail"
+              placeholder="seu.email@exemplo.com ou matrícula"
+              required
+            />
+            <span class="campo-ajuda"
+              >Enviaremos um código de validação institucional.</span
+            >
+          </div>
+          <button type="submit" class="btn-submit-auth" id="btnEnviarCodigo">
+            Enviar Código de Redefinição
+          </button>
+          <div id="mensagemEtapa1" class="mensagem-status"></div>
+          <div class="divisor-auth"><span>ou</span></div>
+          <div class="auth-rodape-links">
+            Lembrou a senha?
+            <a href="login.html" class="link-destaque">Voltar ao login</a>
+          </div>
+        </form>
+        <!-- ETAPA 2: Validação de Código e Nova Senha -->
+        <!-- Formulário: validação dos campos e envio pela camada JavaScript. -->
+        <form
+          id="formEtapa2"
+          style="display: none"
+          onsubmit="return finalizarRedefinicao(event);"
+        >
+          <div
+            style="
+              background: var(--azul-claro);
+              padding: 12px 14px;
+              border-radius: var(--radius-sm);
+              margin-bottom: 16px;
+              font-size: 13px;
+              color: var(--azul-institucional);
+            "
+          >
+            Código de verificação enviado! Para fins de teste/demonstração, o
+            código é: <strong id="codigoDemo">842190</strong>
+          </div>
+          <div class="form-campo">
+            <label for="codigoVerificacao">Código de 6 Dígitos *</label>
+            <input
+              type="text"
+              id="codigoVerificacao"
+              placeholder="Ex: 842190"
+              maxlength="6"
+              style="letter-spacing: 4px; font-size: 16px; text-align: center"
+              required
+            />
+          </div>
+          <div class="form-campo">
+            <label for="novaSenha">Nova Senha *</label>
+            <div class="campo-senha">
+              <input
+                type="password"
+                id="novaSenha"
+                placeholder="Mínimo 6 dígitos"
+                required
+              />
+              <button
+                type="button"
+                class="btn-mostrar-senha"
+                onclick="alternarVisibilidade('novaSenha', this)"
+              >
+                Mostrar
+              </button>
+            </div>
+          </div>
+          <div class="form-campo">
+            <label for="confirmaNovaSenha">Confirmar Nova Senha *</label>
+            <div class="campo-senha">
+              <input
+                type="password"
+                id="confirmaNovaSenha"
+                placeholder="Repita a nova senha"
+                required
+              />
+              <button
+                type="button"
+                class="btn-mostrar-senha"
+                onclick="alternarVisibilidade('confirmaNovaSenha', this)"
+              >
+                Mostrar
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit-auth" id="btnSalvarNovaSenha">
+            Salvar Nova Senha
+          </button>
+          <div id="mensagemEtapa2" class="mensagem-status"></div>
+          <div style="text-align: center; margin-top: 16px">
+            <a
+              href="#"
+              onclick="reiniciarProcesso()"
+              style="
+                font-size: 13px;
+                color: var(--texto-mutado);
+                text-decoration: underline;
+              "
+            >
+              Tentar outro e-mail
+            </a>
+          </div>
+        </form>
+        <!-- SUCESSO -->
+        <div
+          id="blocoSucesso"
+          style="display: none; text-align: center; padding: 10px 0"
+        >
+          <div
+            style="
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              background: var(--verde-suave);
+              color: var(--verde-educacao);
+              font-size: 28px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0 auto 16px;
+            "
+          >
+            ✓
+          </div>
+          <h2
+            style="
+              font-size: 1.3rem;
+              color: var(--texto-principal);
+              margin-bottom: 8px;
+            "
+          >
+            Senha Atualizada!
+          </h2>
+          <p
+            style="
+              font-size: 14px;
+              color: var(--texto-secundario);
+              margin-bottom: 24px;
+            "
+          >
+            Sua credencial de acesso foi redefinida com segurança. Utilize a
+            nova senha para acessar o sistema SGE.
+          </p>
+          <a
+            href="login.html"
+            class="btn-primary"
+            style="width: 100%; display: inline-block"
+            >Ir para a Tela de Login</a
+          >
+        </div>
       </div>
-    </div>
-  </main>
-  <footer class="rodape">
-    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
-    <span>SGE Educação — Todos os direitos reservados</span>
-  </footer>
-</body>
+    </main>
+    <!-- Rodapé institucional. -->
+    <footer class="rodape">
+      <span>SGE Educação — Solução de gestão educacional</span>
+      <span>SGE Educação — Todos os direitos reservados</span>
+    </footer>
+    <!-- Controladores de eventos da página e chamadas à API REST. -->
+    <script src="js/app.js" defer></script>
+  </body>
 </html>

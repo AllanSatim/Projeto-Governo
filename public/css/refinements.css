@@ -1,0 +1,1464 @@
+/* ============================================================================
+   SGE EDUCAÇÃO — DESIGN SYSTEM V2
+   Arquivo complementar: não substitui os seletores e IDs do sistema original.
+   Objetivos: consistência visual, estados acessíveis e navegação responsiva.
+   Alterações de tema pertencem a js/theme.js; regras de negócio não ficam aqui.
+   ============================================================================ */
+
+:root {
+  --gov-topo: #081f38;
+  --azul-institucional: #123456;
+  --azul-medio: #175d91;
+  --azul-hover: #104a76;
+  --azul-claro: #ebf3f9;
+  --azul-subtil: #f2f7fb;
+  --verde-educacao: #0b9279;
+  --verde-hover: #06745f;
+  --verde-suave: #e4f8f2;
+  --verde-texto: #076b56;
+  --cinza-fundo: #f2f5f9;
+  --cinza-linha: #e1e7ee;
+  --texto-principal: #142b43;
+  --texto-secundario: #50677b;
+  --texto-mutado: #708398;
+  --radius-sm: 9px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 25px;
+  --sombra-card:
+    0 3px 18px rgba(17, 46, 78, 0.035), 0 1px 3px rgba(17, 46, 78, 0.035);
+  --sombra-md: 0 10px 28px rgba(17, 46, 78, 0.095);
+  --sombra-lg: 0 19px 48px rgba(17, 46, 78, 0.11);
+  --sge-header: 78px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--cinza-fundo);
+  color: var(--texto-principal);
+}
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+}
+button:not(:disabled),
+a {
+  touch-action: manipulation;
+}
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+:focus-visible {
+  outline: 3px solid #31b7ad !important;
+  outline-offset: 3px;
+}
+::selection {
+  background: #c5eee5;
+  color: #082b43;
+}
+
+.status-dot {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #46d8b5;
+  box-shadow: 0 0 0 3px rgba(70, 216, 181, 0.12);
+}
+.skip-link {
+  position: fixed;
+  left: 14px;
+  top: -80px;
+  padding: 12px 16px;
+  background: #fff;
+  color: #10375a;
+  z-index: 9999;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 10px;
+}
+
+/* 02 — Marca visual original, topo e ações de acesso rápido. */
+header.topo {
+  min-height: var(--sge-header);
+  padding: 12px clamp(18px, 3vw, 38px);
+  background: linear-gradient(105deg, #123453 0%, #173f61 66%, #174961 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(17, 44, 70, 0.11);
+  gap: 22px;
+}
+.identidade {
+  gap: 15px;
+  min-width: 0;
+}
+.brasao {
+  height: 49px;
+  width: 49px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 15px;
+  background: transparent;
+  box-shadow: 0 7px 16px rgba(0, 8, 23, 0.17);
+  padding: 0;
+}
+.brasao img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.identidade .nomes {
+  min-width: 0;
+}
+.identidade .nomes .orgao {
+  color: #bed8e7;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  margin-bottom: 4px;
+}
+.identidade .nomes .sistema {
+  font-size: clamp(15px, 1.6vw, 19px);
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.topo-acoes {
+  gap: 10px;
+}
+.topo-contexto {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  color: #daedf6;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.topo-perfil,
+.btn-sair-topo {
+  min-height: 39px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 15px;
+  border-radius: 11px;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.topo-perfil {
+  border: 1px solid rgba(221, 239, 250, 0.26);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f9ff;
+}
+.topo-perfil:hover {
+  background: rgba(255, 255, 255, 0.17);
+  color: #fff;
+}
+.btn-sair-topo {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  color: #edf5fb;
+  gap: 8px;
+}
+.btn-sair-topo:hover {
+  background: rgba(208, 64, 69, 0.22);
+  border-color: #f0aab0;
+  color: #fff;
+}
+
+/* 03 — Menu lateral: navegabilidade visual consistente em todas as páginas. */
+.corpo {
+  align-items: stretch;
+  min-height: calc(100vh - 126px);
+}
+nav.lateral {
+  width: 265px;
+  background: var(--superficie);
+  border-right: 1px solid var(--cinza-linha);
+  padding: 20px 12px 18px;
+  box-shadow: none;
+  position: relative;
+  z-index: 10;
+}
+nav.lateral .grupo-titulo {
+  padding: 19px 13px 9px;
+  font-size: 10px;
+  letter-spacing: 0.125em;
+  color: var(--texto-mutado);
+}
+nav.lateral ul {
+  margin-bottom: 7px;
+}
+nav.lateral li a {
+  margin: 3px 0;
+  padding: 11px 13px;
+  min-height: 42px;
+  border-left: none;
+  border-radius: 11px;
+  color: var(--texto-secundario);
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+nav.lateral li a:hover {
+  background: var(--azul-subtil);
+  color: var(--azul-institucional);
+  transform: translateX(2px);
+}
+nav.lateral li a.ativo,
+nav.lateral li a[aria-current="page"] {
+  background: var(--azul-claro);
+  border-left: none;
+  color: var(--azul-institucional);
+  font-weight: 800;
+  box-shadow: inset 3px 0 var(--verde-educacao);
+}
+.link-com-icone {
+  gap: 13px;
+}
+nav.lateral svg {
+  width: 17px;
+  height: 17px;
+  opacity: 0.81;
+}
+.nav-rodape-versao {
+  margin-top: 22px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid var(--cinza-linha);
+  border-radius: 13px;
+  background: var(--superficie-secundaria);
+  padding: 14px;
+}
+.nav-rodape-versao small {
+  display: block;
+  margin-top: 5px;
+  font-size: 10px;
+  color: var(--texto-mutado);
+  padding-left: 16px;
+}
+
+/* 04 — Largura, hierarquia tipográfica e cartões do painel principal. */
+main.conteudo {
+  max-width: 1600px;
+  padding: clamp(23px, 3vw, 39px) clamp(20px, 3vw, 43px) 60px;
+  min-width: 0;
+}
+.trilha {
+  gap: 9px;
+  margin-bottom: 13px;
+  font-size: 12px;
+}
+.trilha span.pagina-atual {
+  color: var(--verde-educacao);
+}
+h1.titulo-pagina,
+.cabecalho-pagina h1 {
+  font-size: clamp(23px, 2.4vw, 31px);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+  color: var(--texto-principal);
+  font-weight: 800;
+}
+.cabecalho-pagina {
+  align-items: center;
+  margin-bottom: 26px;
+  gap: 18px;
+}
+.subtitulo-pagina,
+.cabecalho-pagina p {
+  color: var(--texto-secundario);
+  font-size: 13.5px;
+  margin-top: 6px;
+  max-width: 760px;
+  line-height: 1.65;
+}
+.indicadores {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 27px;
+}
+.indicador {
+  min-height: 150px;
+  padding: 20px 21px;
+  border-radius: 17px;
+  box-shadow: var(--sombra-card);
+  border: 1px solid var(--cinza-linha);
+}
+.indicador::after {
+  top: 20px;
+  bottom: 20px;
+  height: auto;
+  width: 3px;
+  border-radius: 99px;
+}
+.indicador:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-md);
+}
+.indicador .rotulo {
+  font-size: 11px;
+  letter-spacing: 0.055em;
+}
+.indicador .valor {
+  font-size: clamp(23px, 2.3vw, 31px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  overflow-wrap: anywhere;
+}
+.indicador .icone-indicador {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+}
+.indicador .nota {
+  font-size: 12px;
+}
+.card,
+.painel {
+  border-radius: 17px;
+  border: 1px solid var(--cinza-linha);
+  box-shadow: var(--sombra-card);
+  margin-bottom: 23px;
+}
+.painel-cabecalho {
+  padding: 19px 22px;
+  gap: 13px;
+}
+.painel-cabecalho h2,
+.card h2 {
+  font-size: 15px;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+.painel-corpo,
+.card-corpo {
+  padding: 22px;
+}
+.secao-titulo {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.modulos {
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  gap: 16px;
+}
+.modulo {
+  padding: 23px;
+  border-radius: 17px;
+  gap: 12px;
+  box-shadow: var(--sombra-card);
+}
+.modulo:hover {
+  border-color: rgba(11, 146, 121, 0.45);
+  box-shadow: var(--sombra-md);
+  transform: translateY(-3px);
+}
+.modulo .icone-modulo {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: #e9f3f8;
+}
+.modulo .nome-modulo {
+  font-size: 15px;
+  font-weight: 800;
+}
+.modulo .desc-modulo {
+  font-size: 12.7px;
+  line-height: 1.65;
+}
+.modulo .link-modulo {
+  margin-top: 6px;
+  color: var(--verde-educacao);
+}
+
+/* 05 — Formulários: campos altos, erro/foco evidente e grupos espaçados. */
+label {
+  font-weight: 700;
+  font-size: 12.5px;
+}
+.form-row {
+  gap: 18px;
+  margin-bottom: 14px;
+}
+.form-campo {
+  margin-bottom: 18px;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+input[type="tel"],
+select,
+textarea,
+.academic-field input,
+.academic-field select {
+  background-color: var(--superficie);
+  border: 1px solid var(--cinza-linha);
+  border-radius: 11px;
+  min-height: 43px;
+  padding: 10px 13px;
+  color: var(--texto-principal);
+  font-size: 13px;
+  outline: none;
+  transition:
+    border-color 0.17s ease,
+    box-shadow 0.17s ease,
+    background 0.17s ease;
+}
+textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--verde-educacao);
+  box-shadow: 0 0 0 3px rgba(11, 146, 121, 0.13);
+}
+input::placeholder,
+textarea::placeholder {
+  color: #90a1b1;
+}
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: #ca4747;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--verde-educacao);
+}
+.campo-ajuda {
+  font-size: 11.5px;
+}
+
+/* 06 — Botões com alturas, pesos e estados padronizados. */
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-danger,
+.btn-outline,
+.btn-in,
+.btn-out,
+.btn-exportar,
+.btn-limpar,
+.btn-submit-auth,
+.btn-entrar {
+  min-height: 40px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 10px 16px;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+.btn-primary,
+.btn-submit-auth,
+.btn-entrar {
+  background: var(--azul-institucional);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(18, 52, 86, 0.1);
+}
+.btn-primary:hover,
+.btn-submit-auth:hover,
+.btn-entrar:hover {
+  background: #19557e;
+  box-shadow: 0 7px 16px rgba(18, 52, 86, 0.17);
+  transform: translateY(-1px);
+}
+.btn-success,
+.btn-in {
+  background: var(--verde-educacao);
+}
+.btn-secondary,
+.btn-exportar,
+.btn-limpar {
+  background: var(--superficie);
+  border: 1px solid var(--cinza-linha);
+  color: var(--texto-secundario);
+}
+.btn-secondary:hover,
+.btn-exportar:hover,
+.btn-limpar:hover {
+  background: var(--azul-subtil);
+  color: var(--azul-institucional);
+  border-color: #c5d5e0;
+}
+.btn-danger {
+  background: #ad3d42;
+}
+.btn-danger:hover {
+  background: #8c2d33;
+}
+.btn-sm {
+  padding: 6px 10px;
+  min-height: 32px;
+  font-size: 11.5px;
+}
+.btn-lg {
+  padding: 12px 22px;
+  min-height: 47px;
+  font-size: 14px;
+}
+button:active:not(:disabled),
+a.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* 07 — Tabelas: alinhamento dos cabeçalhos e ações por registro. */
+.tabela-responsiva {
+  scrollbar-width: thin;
+  scrollbar-color: #cad8e5 transparent;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead th {
+  background: var(--superficie-secundaria);
+  padding: 14px 16px;
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  color: var(--texto-secundario);
+  font-weight: 800;
+}
+tbody td {
+  padding: 15px 16px;
+  font-size: 12.7px;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--cinza-linha);
+}
+tbody tr:hover {
+  background: var(--azul-subtil);
+}
+tbody tr:nth-child(even) {
+  background: rgba(126, 154, 182, 0.03);
+}
+tbody tr:nth-child(even):hover {
+  background: var(--azul-subtil);
+}
+.row-actions,
+.acoes-aprovacao {
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.row-actions button {
+  border-radius: 8px;
+  padding: 7px 10px;
+}
+.badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 10px;
+}
+.badge-bebidas {
+  background: #dff5f6;
+  color: #146a75;
+}
+.empty,
+.vazio-lista {
+  padding: 43px 22px;
+  color: var(--texto-mutado);
+}
+.toolbar {
+  gap: 12px;
+  padding: 17px 22px;
+  background: var(--superficie);
+}
+.toolbar input[type="search"],
+.toolbar input[type="text"] {
+  max-width: 380px;
+}
+.toolbar select {
+  max-width: 240px;
+}
+.tabs-nav {
+  gap: 7px;
+  border-bottom-color: var(--cinza-linha);
+}
+.tab-btn {
+  padding: 11px 14px;
+  border-radius: 9px 9px 0 0;
+  font-size: 13px;
+}
+.tab-btn.ativo {
+  color: var(--verde-educacao);
+  border-bottom-color: var(--verde-educacao);
+}
+
+/* 08 — Gestão acadêmica: abinhas e editor com o mesmo padrão dos módulos. */
+.academic-kpis {
+  gap: 15px;
+  margin: 20px 0 24px;
+}
+.academic-kpi {
+  border-radius: 15px;
+  padding: 18px 20px;
+  box-shadow: var(--sombra-card);
+}
+.academic-kpi strong {
+  color: var(--azul-institucional);
+  font-size: 27px;
+}
+.academic-tabs {
+  gap: 7px;
+  padding: 15px 18px;
+}
+.academic-tab {
+  border-radius: 9px;
+  padding: 10px 15px;
+  font-size: 12.5px;
+}
+.academic-tab.selected {
+  background: var(--azul-institucional);
+  border-color: var(--azul-institucional);
+}
+.academic-toolbar {
+  padding: 17px 20px;
+}
+.academic-table th,
+.academic-table td {
+  padding: 14px 15px;
+}
+.academic-form-panel {
+  scroll-margin-top: 100px;
+}
+.academic-count {
+  font-size: 12px;
+}
+
+/* 09 — Acesso e cadastro: apresentação e formulário lado a lado no desktop. */
+.area-auth,
+.area-login {
+  display: grid;
+  grid-template-columns: minmax(270px, 410px) minmax(335px, 465px);
+  align-content: center;
+  align-items: stretch;
+  gap: 0;
+  padding: clamp(26px, 5vh, 65px) 22px;
+  background:
+    radial-gradient(circle at 15% 5%, #e0ecf4 0, transparent 43%),
+    var(--cinza-fundo);
+}
+.auth-showcase {
+  background: linear-gradient(156deg, #123654 0%, #12435e 68%, #12665c 100%);
+  color: #fff;
+  min-height: 455px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 23px 0 0 23px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 42px rgba(18, 52, 86, 0.13);
+}
+.auth-showcase::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  right: -200px;
+  top: -100px;
+  box-shadow:
+    0 0 0 50px rgba(255, 255, 255, 0.035),
+    0 0 0 100px rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+}
+.showcase-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 800;
+  color: #c8ebed;
+}
+.showcase-art {
+  margin: auto 0 24px;
+}
+.showcase-art img {
+  width: 97px;
+  height: 97px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 25px;
+  box-shadow: 0 14px 27px rgba(0, 0, 0, 0.14);
+}
+.auth-showcase h2 {
+  font-size: clamp(22px, 2.5vw, 31px);
+  line-height: 1.27;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  margin-bottom: 14px;
+}
+.auth-showcase h2 span {
+  color: #84e2ce;
+}
+.auth-showcase p {
+  color: #d3e3ed;
+  font-size: 12.8px;
+  line-height: 1.75;
+  max-width: 325px;
+}
+.showcase-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 23px 0 15px;
+}
+.showcase-points span {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 7px 9px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #d6f0f1;
+}
+.card-auth,
+.card-login {
+  max-width: none;
+  padding: clamp(24px, 3.5vw, 42px);
+  border-radius: 0 23px 23px 0;
+  border: 1px solid var(--cinza-linha);
+  border-left: none;
+  box-shadow: 0 16px 42px rgba(18, 52, 86, 0.1);
+}
+.card-auth.largo {
+  max-width: none;
+}
+.card-auth-cabecalho {
+  text-align: left;
+  margin-bottom: 29px;
+}
+.card-auth-cabecalho .badge-auth {
+  display: inline-block;
+  font-size: 9.5px;
+  background: #e4f8f2;
+  color: #0a7c65;
+  margin-bottom: 17px;
+  letter-spacing: 0.09em;
+}
+.card-auth-cabecalho h1 {
+  color: var(--texto-principal);
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  font-size: clamp(23px, 2.6vw, 29px);
+}
+.card-auth-cabecalho p {
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+.btn-submit-auth {
+  min-height: 45px;
+  font-size: 13px;
+}
+
+/* 10 — Rodapé, menu móvel e acessibilidade de movimento. */
+footer.rodape {
+  background: var(--superficie);
+  border-top: 1px solid var(--cinza-linha);
+  color: var(--texto-mutado);
+  font-size: 11px;
+  padding: 17px clamp(18px, 3vw, 39px);
+  gap: 10px;
+}
+.nav-backdrop[hidden] {
+  display: none !important;
+}
+.nav-backdrop {
+  display: none;
+}
+
+/* Com a largura reduzida, o menu aparece sobre o conteúdo e recebe um backdrop. */
+@media (max-width: 1100px) {
+  .topo-contexto {
+    display: none;
+  }
+  nav.lateral {
+    width: 234px;
+  }
+  main.conteudo {
+    padding: 23px 23px 46px;
+  }
+}
+@media (max-width: 860px) {
+  :root {
+    --sge-header: 68px;
+  }
+  header.topo {
+    min-height: var(--sge-header);
+    height: auto;
+    padding: 10px 17px;
+  }
+  .btn-menu-mobile {
+    display: inline-flex;
+    height: 37px;
+    width: 37px;
+    padding: 6px;
+    border-radius: 10px;
+  }
+  nav.lateral {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(310px, 86vw);
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    border-radius: 0 18px 18px 0;
+    box-shadow: var(--sombra-lg);
+    z-index: 201;
+    transform: translateX(-105%);
+    transition: transform 0.23s ease;
+  }
+  nav.lateral.aberta {
+    left: 0;
+    transform: translateX(0);
+  }
+  .nav-backdrop:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: block;
+    width: 100vw;
+    height: 100dvh;
+    border: 0;
+    background: rgba(7, 23, 43, 0.62);
+    cursor: pointer;
+  }
+  body.nav-open {
+    overflow: hidden;
+  }
+  .identidade .nomes .sistema {
+    font-size: 15px;
+  }
+  .identidade .nomes .orgao {
+    font-size: 9px;
+  }
+  main.conteudo {
+    padding: 25px 17px 43px;
+  }
+  .indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .area-auth {
+    grid-template-columns: minmax(0, 510px);
+    padding: 32px 17px;
+  }
+  .auth-showcase {
+    display: none;
+  }
+  .card-auth,
+  .card-login,
+  .card-auth.largo {
+    border-radius: 20px;
+    border-left: 1px solid var(--cinza-linha);
+    width: 100%;
+    max-width: 510px;
+  }
+}
+@media (max-width: 620px) {
+  header.topo {
+    gap: 8px;
+  }
+  .identidade {
+    gap: 9px;
+  }
+  .brasao {
+    width: 39px;
+    height: 39px;
+    border-radius: 10px;
+  }
+  .identidade .nomes .sistema {
+    font-size: 12.5px;
+    max-width: 48vw;
+  }
+  .identidade .nomes .orgao {
+    font-size: 8.5px;
+  }
+  .topo-perfil {
+    display: none;
+  }
+  .btn-sair-topo {
+    min-height: 35px;
+    padding: 6px 9px;
+    font-size: 11px;
+  }
+  .indicadores {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 11px;
+  }
+  .indicador {
+    min-height: 130px;
+  }
+  .cabecalho-pagina {
+    align-items: stretch;
+  }
+  .acoes-pagina {
+    width: 100%;
+  }
+  .acoes-pagina > a,
+  .acoes-pagina > button {
+    flex: 1;
+  }
+  .painel-cabecalho,
+  .painel-corpo,
+  .card-corpo {
+    padding: 17px;
+  }
+  .toolbar > * {
+    width: 100%;
+    max-width: none !important;
+  }
+  .academic-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  footer.rodape {
+    padding: 16px;
+  }
+}
+
+/* Paleta noturna consistente: respeita preferências salvas sem gerar texto ilegível. */
+html[data-theme="dark"] {
+  --cinza-fundo: #0c1725;
+  --superficie: #172639;
+  --superficie-secundaria: #1b2d40;
+  --cinza-linha: #314358;
+  --texto-principal: #f0f5fa;
+  --texto-secundario: #cad6e1;
+  --texto-mutado: #9bb0c4;
+  --azul-claro: #233b55;
+  --azul-subtil: #21354a;
+  --verde-educacao: #52d9be;
+  --verde-suave: #153e38;
+  --verde-texto: #9ff5dd;
+}
+html[data-theme="dark"] .card-auth-cabecalho h1,
+html[data-theme="dark"] .cabecalho-pagina h1,
+html[data-theme="dark"] h1.titulo-pagina,
+html[data-theme="dark"] .indicador .valor {
+  color: var(--texto-principal);
+}
+html[data-theme="dark"] .badge-auth {
+  background: #224a49;
+  color: #91ebd4;
+}
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .btn-entrar,
+html[data-theme="dark"] .btn-submit-auth {
+  background: #235c86;
+}
+html[data-theme="dark"] .btn-secondary,
+html[data-theme="dark"] .btn-exportar {
+  background: var(--superficie-secundaria);
+}
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea {
+  color: var(--texto-principal);
+}
+html[data-theme="dark"] .topo-perfil {
+  color: #eff9ff;
+}
+html[data-theme="dark"] tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
+html[data-theme="dark"] .card-auth {
+  border-color: var(--cinza-linha);
+}
+html[data-theme="dark"] .academic-tab.selected {
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Cadastros e recuperação de conta têm campos adicionais: preserva leitura no desktop. */
+@media (min-width: 861px) {
+  .area-auth:has(.card-auth.largo) {
+    grid-template-columns: minmax(270px, 380px) minmax(450px, 580px);
+  }
+}
+
+/* Layout amplo do almoxarifado: evita compressao lateral e overflow da pagina. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main.conteudo {
+  max-width: none;
+  width: 100%;
+  overflow: hidden;
+}
+
+.container-duas-colunas {
+  grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+  min-width: 0;
+}
+
+.container-duas-colunas > div {
+  min-width: 0;
+}
+
+.painel,
+.tabela-responsiva,
+.toolbar {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.painel:has(#tableBody) table,
+.painel:has(#historyBody) table {
+  table-layout: fixed;
+}
+
+.painel:has(#tableBody) th,
+.painel:has(#tableBody) td {
+  padding-inline: 9px;
+  overflow-wrap: anywhere;
+}
+
+.painel:has(#historyBody) th,
+.painel:has(#historyBody) td {
+  padding-inline: 8px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1450px) {
+  .container-duas-colunas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container-duas-colunas > div:first-child {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .container-duas-colunas > div:first-child .painel {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .container-duas-colunas > div:first-child {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .container-duas-colunas > div:first-child .painel {
+    margin-bottom: 20px;
+  }
+
+  .painel:has(#tableBody) table,
+  .painel:has(#historyBody) table {
+    table-layout: auto;
+  }
+
+  .painel:has(#tableBody) table,
+  .painel:has(#historyBody) table {
+    min-width: 0;
+  }
+
+  .painel:has(#tableBody) th,
+  .painel:has(#tableBody) td,
+  .painel:has(#historyBody) th,
+  .painel:has(#historyBody) td {
+    padding: 10px 7px;
+    font-size: 11px;
+  }
+
+  .painel:has(#tableBody) th:nth-child(4),
+  .painel:has(#tableBody) td:nth-child(4),
+  .painel:has(#tableBody) th:nth-child(6),
+  .painel:has(#tableBody) td:nth-child(6),
+  .painel:has(#tableBody) th:nth-child(7),
+  .painel:has(#tableBody) td:nth-child(7) {
+    display: none;
+  }
+
+  .painel:has(#historyBody) th:nth-child(5),
+  .painel:has(#historyBody) td:nth-child(5),
+  .painel:has(#historyBody) th:nth-child(7),
+  .painel:has(#historyBody) td:nth-child(7) {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   IDENTIDADE VISUAL SGE — Logos oficiais desta demonstração (V3)
+   Uso: símbolo nas barras compactas e marca completa nos painéis de acesso
+   e no rodapé lateral. A API, rotas e componentes de formulário são mantidos.
+   ========================================================================== */
+header.topo .brasao {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  box-shadow: 0 5px 18px rgba(0, 10, 35, 0.18);
+}
+header.topo .brasao img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* A marca por extenso possui fundo branco, portanto ganha moldura clara. */
+.showcase-art {
+  margin: 25px 0 27px;
+  width: 100%;
+  background: #fff;
+  padding: 13px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 16px 35px rgba(0, 15, 40, 0.19);
+}
+.showcase-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 154px;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.nav-brand-logo {
+  display: block;
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  max-height: 87px;
+  object-fit: contain;
+  padding: 8px;
+  margin: 0 auto 12px;
+  background: #fff;
+  border-radius: 11px;
+}
+@media (max-width: 860px) {
+  header.topo .brasao {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    padding: 3px;
+  }
+}
+@media (max-width: 620px) {
+  header.topo .brasao {
+    width: 39px;
+    height: 39px;
+    border-radius: 10px;
+    padding: 3px;
+  }
+}
+/* Em tema escuro, a marca horizontal conserva contraste por estar em fundo branco. */
+html[data-theme="dark"] .nav-brand-logo,
+html[data-theme="dark"] .showcase-art {
+  background: #fff;
+}
+
+/* RBAC visual: links administrativos permanecem ocultos até a API confirmar
+   o perfil de administrador. O bloqueio efetivo está nas rotas do backend. */
+.menu-admin-only {
+  display: none !important;
+}
+body.perfil-admin .menu-admin-only {
+  display: list-item !important;
+}
+/* Formulário de auditoria: o operador é definido pela sessão autenticada. */
+input[readonly][id="moveResponsavel"] {
+  background: var(--superficie, #eef3f8);
+  cursor: not-allowed;
+}
+.historico-operacoes {
+  margin-top: 18px;
+}
+.historico-operacoes table {
+  min-width: 650px;
+}
+
+/* V5 — Cancelamentos preservam trilha de auditoria; exclusões aparecem só ao autor. */
+.mov-cancelada {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  color: #854d0e;
+  background: #fef3c7;
+  font-size: 11px;
+  font-weight: 700;
+}
+.acao-indisponivel {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Movimentações: tabela sempre encaixada na área disponível. */
+.movimentacoes-layout,
+.movimentacoes-historico,
+.tabela-movimentacoes {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.movimentacoes-historico {
+  overflow: hidden;
+}
+
+.tabela-movimentacoes {
+  overflow-x: hidden;
+}
+
+.tabela-historico-movimentacoes {
+  table-layout: fixed;
+  min-width: 0 !important;
+  width: 100%;
+}
+
+.tabela-historico-movimentacoes th,
+.tabela-historico-movimentacoes td {
+  padding: 11px 8px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+  vertical-align: middle;
+}
+
+.tabela-historico-movimentacoes td:last-child {
+  text-align: center;
+}
+
+@media (max-width: 1450px) {
+  .movimentacoes-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tabela-historico-movimentacoes th:nth-child(6),
+  .tabela-historico-movimentacoes td:nth-child(6),
+  .tabela-historico-movimentacoes th:nth-child(7),
+  .tabela-historico-movimentacoes td:nth-child(7) {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .tabela-historico-movimentacoes th,
+  .tabela-historico-movimentacoes td {
+    padding: 8px 5px;
+    font-size: 10.5px;
+  }
+
+  .tabela-historico-movimentacoes th:nth-child(5),
+  .tabela-historico-movimentacoes td:nth-child(5),
+  .tabela-historico-movimentacoes th:nth-child(8),
+  .tabela-historico-movimentacoes td:nth-child(8) {
+    display: none;
+  }
+}
+
+/* Relatórios: gráficos lado a lado e rótulos legíveis, sem sobreposição. */
+.graficos-relatorio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+  min-width: 0;
+}
+
+.grafico-relatorio-card {
+  min-width: 0;
+  margin-bottom: 0 !important;
+  overflow: hidden;
+}
+
+.grafico-relatorio-area {
+  height: 420px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.grafico-relatorio-area canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#tabelaItensCriticos td {
+  white-space: normal;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.painel:has(#tabelaItensCriticos) table {
+  table-layout: fixed;
+  min-width: 0;
+}
+
+.painel:has(#tabelaItensCriticos) th,
+.painel:has(#tabelaItensCriticos) td {
+  padding-inline: 10px;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1450px) {
+  .graficos-relatorio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grafico-relatorio-area {
+    height: 380px;
+  }
+}
+
+@media (max-width: 860px) {
+  .graficos-relatorio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .grafico-relatorio-area {
+    height: 300px;
+  }
+
+  .painel:has(#tabelaItensCriticos) table {
+    table-layout: auto;
+  }
+
+  .painel:has(#tabelaItensCriticos) th:nth-child(2),
+  .painel:has(#tabelaItensCriticos) td:nth-child(2),
+  .painel:has(#tabelaItensCriticos) th:nth-child(3),
+  .painel:has(#tabelaItensCriticos) td:nth-child(3),
+  .painel:has(#tabelaItensCriticos) th:nth-child(5),
+  .painel:has(#tabelaItensCriticos) td:nth-child(5) {
+    display: none;
+  }
+}
+
+/* Merenda: largura fixa das tabelas, sem arrasto lateral da página. */
+.painel-merenda-itens,
+.painel-merenda-movimentos {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.tabela-merenda-itens,
+.tabela-merenda-movimentos {
+  table-layout: fixed;
+  min-width: 0 !important;
+  width: 100%;
+}
+
+.tabela-merenda-itens th,
+.tabela-merenda-itens td,
+.tabela-merenda-movimentos th,
+.tabela-merenda-movimentos td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  vertical-align: middle;
+  padding: 10px 8px;
+}
+
+.painel-merenda-itens .tabela-responsiva,
+.painel-merenda-movimentos .tabela-responsiva {
+  overflow-x: hidden;
+}
+
+.tabela-merenda-itens td:last-child {
+  text-align: right;
+}
+
+.tabela-merenda-itens td:last-child button {
+  width: 100%;
+  margin: 3px 0;
+}
+
+@media (max-width: 1450px) {
+  .tabela-merenda-itens th:nth-child(7),
+  .tabela-merenda-itens td:nth-child(7),
+  .tabela-merenda-itens th:nth-child(8),
+  .tabela-merenda-itens td:nth-child(8),
+  .tabela-merenda-itens th:nth-child(9),
+  .tabela-merenda-itens td:nth-child(9),
+  .tabela-merenda-movimentos th:nth-child(6),
+  .tabela-merenda-movimentos td:nth-child(6),
+  .tabela-merenda-movimentos th:nth-child(7),
+  .tabela-merenda-movimentos td:nth-child(7) {
+    display: none;
+  }
+
+  .painel-merenda-itens .tabela-responsiva,
+  .painel-merenda-movimentos .tabela-responsiva {
+    display: block;
+  }
+}
+
+@media (max-width: 860px) {
+  .tabela-merenda-itens th:nth-child(2),
+  .tabela-merenda-itens td:nth-child(2),
+  .tabela-merenda-itens th:nth-child(4),
+  .tabela-merenda-itens td:nth-child(4),
+  .tabela-merenda-movimentos th:nth-child(5),
+  .tabela-merenda-movimentos td:nth-child(5),
+  .tabela-merenda-movimentos th:nth-child(8),
+  .tabela-merenda-movimentos td:nth-child(8) {
+    display: none;
+  }
+
+  .tabela-merenda-itens th,
+  .tabela-merenda-itens td,
+  .tabela-merenda-movimentos th,
+  .tabela-merenda-movimentos td {
+    font-size: 10.5px;
+    padding: 8px 5px;
+  }
+
+  .tabela-merenda-itens td:last-child button {
+    min-height: 32px;
+    padding: 5px 7px;
+    font-size: 10.5px;
+  }
+}

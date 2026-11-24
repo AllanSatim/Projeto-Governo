@@ -2,24 +2,33 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- Identidade visual: símbolo utilizado também na aba do navegador. -->
+  <link rel="icon" type="image/png" href="assets/sge-simbolo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Perfil — SGE Educação</title>
   <script src="js/theme.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Ajustes de identidade visual, acessibilidade e layout responsivo. -->
+  <link rel="stylesheet" href="css/refinements.css">
 </head>
 <body>
+  <!-- Atalho de acessibilidade: teclado pode saltar a navegação e chegar ao conteúdo. -->
+  <a class="skip-link" href="#conteudoPrincipal">Ir para o conteúdo</a>
+  <!-- Barra superior, identidade do produto e ações da conta. -->
   <header class="topo">
     <div class="identidade">
-      <button class="btn-menu-mobile" onclick="document.getElementById('menuLateral').classList.toggle('aberta')">
+      <button type="button" class="btn-menu-mobile" aria-label="Abrir menu de navegação" aria-controls="menuLateral" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
-      <div class="brasao">SME</div>
+      <div class="brasao" aria-label="Logomarca SGE"><img src="assets/sge-simbolo.png" alt="Símbolo do SGE Educação" width="52" height="52"></div>
       <div class="nomes">
         <div class="orgao">Secretaria Municipal de Educação</div>
         <div class="sistema">Meu Perfil Institucional</div>
       </div>
     </div>
     <div class="topo-acoes">
+      <span class="topo-contexto"><span class="status-dot" aria-hidden="true"></span> Acesso institucional</span>
+      <a class="topo-perfil" href="usuario.html" title="Abrir meu perfil" aria-label="Meu perfil">Meu perfil</a>
       <a href="login.html" class="btn-sair-topo">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
         Sair
@@ -28,84 +37,96 @@
   </header>
   <div class="corpo">
     <!-- NAVEGAÇÃO LATERAL UNIFICADA -->
-    <nav class="lateral" id="menuLateral">
+    <nav class="lateral" id="menuLateral" aria-label="Menu principal">
       <div class="lateral-conteudo">
+        <!-- A navegação é a mesma em todas as páginas; apenas o item ativo muda. -->
         <div class="grupo-titulo">PAINEL PRINCIPAL</div>
         <ul>
           <li><a href="index.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              Início / Painel Geral
+              Visão geral
             </span>
           </a></li>
         </ul>
-        <div class="grupo-titulo">GESTÃO DE ESTOQUE</div>
+        <div class="grupo-titulo">RECURSOS & ALMOXARIFADO</div>
         <ul>
           <li><a href="Estoque.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-              Estoque de Materiais
+              Estoque de materiais
             </span>
           </a></li>
           <li><a href="movimentar-estoque.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>
-              Movimentar Estoque
+              Movimentações
             </span>
           </a></li>
           <li><a href="Merenda.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-              Estoque de Merenda
+              Merenda escolar
             </span>
           </a></li>
         </ul>
-        <div class="grupo-titulo">FINANÇAS & CUSTOS</div>
+        <div class="grupo-titulo">GESTÃO FINANCEIRA</div>
         <ul>
           <li><a href="financeiro.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              Relatório Financeiro
+              Financeiro
             </span>
           </a></li>
           <li><a href="Relatorio.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5m6 14V9m6 10v-6"/></svg>
-              Relatórios & Reposição
+              Relatórios
             </span>
           </a></li>
         </ul>
-        <div class="grupo-titulo">ADMINISTRAÇÃO & ACESSO</div>
+        <div class="grupo-titulo">GESTÃO ESCOLAR</div>
         <ul>
-          <li><a class="ativo" href="usuario.html">
+          <li><a href="Gestao-Escolar.html" class="link-gestao-escolar">
+            <span class="link-com-icone">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10 12 4l9 6v10H3z"/><path d="M8 20v-7h8v7"/></svg>
+              Gestão acadêmica
+            </span>
+          </a></li>
+        </ul>
+        <div class="grupo-titulo">PESSOAS & ACESSO</div>
+        <ul>
+          <li><a href="usuario.html" class="ativo" aria-current="page">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Meu Perfil
+              Meu perfil
             </span>
           </a></li>
-          <li><a href="admin.html">
+          <li class="menu-admin-only"><a href="admin.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              Painel do Admin
-            </span>
-          </a></li>
-          <li class="item-configuracoes-removido"><a href="configuracoes.html">
-            <span class="link-com-icone">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09A1.7 1.7 0 009 19.4a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 112.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9a1.7 1.7 0 001.55 1H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51 1z"/></svg>
-              Configurações
+              Administração
             </span>
           </a></li>
           <li><a href="Suporte.html">
             <span class="link-com-icone">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              Suporte Técnico
+              Suporte
             </span>
           </a></li>
         </ul>
       </div>
+      <div class="nav-rodape-versao">
+        <!-- Marca completa em fundo claro; o símbolo colorido aparece no topo. -->
+        <img class="nav-brand-logo" src="assets/sge-marca-completa.webp" alt="SGE Educação — Sistema de Gestão Educacional" loading="lazy" width="220" height="88">
+        <small>SGE Educação · Interface v2.0</small>
+      </div>
     </nav>
+    <!-- O fundo escurecido facilita fechar o menu em telas pequenas. -->
+    <button id="navBackdrop" class="nav-backdrop" type="button" aria-label="Fechar navegação" hidden></button>
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="conteudo">
+    <!-- Conteúdo principal: indicadores, filtros, tabelas e formulários desta tela. -->
+    <main id="conteudoPrincipal" class="conteudo">
       <div class="trilha">
         <a href="index.html">Início</a>
         <span class="separador">/</span>
@@ -148,6 +169,7 @@
               <h2>Informações do Usuário</h2>
             </div>
             <div class="painel-corpo">
+              <!-- Formulário: validação dos campos e envio pela camada JavaScript. -->
               <form id="formPerfilDados" onsubmit="return salvarDadosPerfil(event)">
                 <div class="form-row">
                   <div class="form-campo">
@@ -184,11 +206,27 @@
           </div>
         </div>
       </div>
+      <section class="painel" style="margin-top:18px">
+        <div class="painel-cabecalho"><h2>Segurança da conta</h2></div>
+        <div class="painel-corpo">
+          <!-- Formulário: validação dos campos e envio pela camada JavaScript. -->
+          <form id="formAlterarSenha" onsubmit="return alterarSenhaPerfil(event)">
+            <div class="form-row"><div class="form-campo"><label for="senhaAtual">Senha atual</label><input id="senhaAtual" type="password" autocomplete="current-password" required></div>
+            <div class="form-campo"><label for="senhaNova">Nova senha (mínimo 8 caracteres)</label><input id="senhaNova" type="password" minlength="8" autocomplete="new-password" required></div></div>
+            <div class="form-campo"><label for="senhaConfirma">Confirmar nova senha</label><input id="senhaConfirma" type="password" minlength="8" autocomplete="new-password" required></div>
+            <button type="submit" class="btn-primary">Atualizar senha</button>
+            <div id="msgAlterarSenha" class="mensagem-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
     </main>
   </div>
+  <!-- Rodapé institucional. -->
   <footer class="rodape">
-    <span>Prefeitura Municipal — Secretaria Municipal de Educação</span>
+    <span>SGE Educação — Solução de gestão educacional</span>
     <span>SGE Educação — Todos os direitos reservados</span>
   </footer>
+  <!-- Controladores de eventos da página e chamadas à API REST. -->
+  <script src="js/app.js" defer></script>
 </body>
 </html>

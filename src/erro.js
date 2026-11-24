@@ -1,3 +1,10 @@
+/**
+ * src/erro.js — SGE Educação
+ * Utilitários de erros HTTP e encapsulamento de funções assíncronas.
+ *
+ * Organização: funções de responsabilidade única; alterações de contrato devem
+ * ser refletidas nas rotas e páginas relacionadas.
+ */
 /** Erro com status HTTP. Ex.: throw new ApiError(400, 'CPF inválido.') */
 class ApiError extends Error {
   constructor(status, mensagem) {
@@ -7,6 +14,7 @@ class ApiError extends Error {
 }
 
 /** Evita try/catch em toda rota assíncrona. */
-const rota = (fn) => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
+const rota = (fn) => (req, res, next) =>
+  Promise.resolve(fn(req, res, next)).catch(next);
 
 module.exports = { ApiError, rota };
